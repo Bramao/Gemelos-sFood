@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">GemelosApp</string>
+    <string name="txt_txv_usuario">Usuario</string>
+    <string name="txt_txv_contraseña">Contraseña</string>
+    <string name="txt_btn_ingresar">Ingresar</string>
+    <string name="txt_btn_registrar">Registrarse</string>
+    <string name="txt_txv_rnumero">Número de tel.</string>
+    <string name="txt_txv_rdireccion">Dirección(opcional)</string>
+    <string name="misDatos">SPgemelosapp</string>
+    <string name="txt_btn_bproductos">Productos</string>
+    <string name="txt_btn_bcarrito">Carrito Compra</string>
+    <string name="txt_txv_ListProductos">Listado Productos</string>
+    <string name="txt_btn_dagregar">Agregar al carrito</string>
+    <string name="txt_btn_ccomprar">Comprar</string>
 </resources>

@@ -4,32 +4,56 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity">
+    tools:context=".RegistroActivity">
 
     <ImageView
-        android:id="@+id/imv_logoL"
+        android:id="@+id/imv_logoR"
         android:layout_width="300dp"
         android:layout_height="100dp"
         android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:src="@tools:sample/avatars" />
+        tools:srcCompat="@tools:sample/avatars" />
 
     <EditText
-        android:id="@+id/edt_usuario"
+        android:id="@+id/edt_rusuario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
         android:ems="10"
         android:hint="@string/txt_txv_usuario"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imv_logoL" />
+        app:layout_constraintTop_toBottomOf="@+id/imv_logoR" />
 
     <EditText
-        android:id="@+id/edt_contra"
+        android:id="@+id/edt_rnumero"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:ems="10"
+        android:hint="@string/txt_txv_rnumero"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edt_rusuario" />
+
+    <EditText
+        android:id="@+id/edt_rdireccion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:ems="10"
+        android:hint="@string/txt_txv_rdireccion"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edt_rnumero" />
+
+    <EditText
+        android:id="@+id/edt_rcontra"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
@@ -38,25 +62,15 @@
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edt_usuario" />
+        app:layout_constraintTop_toBottomOf="@+id/edt_rdireccion" />
 
     <Button
-        android:id="@+id/btn_ingresar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:text="@string/txt_btn_ingresar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edt_contra" />
-
-    <Button
-        android:id="@+id/btn_registrar"
+        android:id="@+id/btn_rregistrar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="@string/txt_btn_registrar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_ingresar" />
+        app:layout_constraintTop_toBottomOf="@+id/edt_rcontra" />
 </androidx.constraintlayout.widget.ConstraintLayout>

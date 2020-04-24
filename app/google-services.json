@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "688108980805",
+    "firebase_url": "https://gemelosapp.firebaseio.com",
+    "project_id": "gemelosapp",
+    "storage_bucket": "gemelosapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:688108980805:android:a33675ecf7df0d48a6b12c",
+        "android_client_info": {
+          "package_name": "co.edu.unab.gemelosapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "688108980805-61n6mhedmc27kepavjd1p5ne3rdt0130.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBr1zex7npL2SvsBPWKe6mZ8GuQVR7aaHI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "688108980805-61n6mhedmc27kepavjd1p5ne3rdt0130.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

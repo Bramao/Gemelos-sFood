@@ -8,26 +8,49 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.squareup.picasso.Picasso;
 
 public class DescripcionActivity extends AppCompatActivity {
 
     private TextView txvDproducto, txvDdescripcion, txvDprecio;
     private Button btnDagregar;
     private ImageView imvLogoD, imvDproducto;
+    private CarritoDAO carritoDAO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_descripcion);
 
+        BaseDatosC db = BaseDatosC.obtenerInstancia(this);
+        carritoDAO = db.carritoDAO();
+
         this.asociarElementos();
+
+        final Producto miProducto = (Producto) getIntent().getSerializableExtra("producto");
+
+        txvDproducto.setText(miProducto.getNombre());
+        txvDdescripcion.setText(miProducto.getDescripcion());
+        txvDprecio.setText(String.valueOf(miProducto.getPrecio()));
+        Picasso.get().load(miProducto.getFoto()).resize(300,300).into(imvDproducto);
+
 
         btnDagregar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent in = new Intent(DescripcionActivity.this, CarritoActivity.class);
-                startActivity(in);
-                finish();
+                Producto producto_tmp = carritoDAO.verificar(miProducto.getNombre());
+
+                if(producto_tmp==null){
+                    Intent in = new Intent(DescripcionActivity.this, CarritoActivity.class);
+                    in.putExtra("producto", miProducto);
+                    startActivity(in);
+                    finish();
+                }else {
+                    Toast.makeText(DescripcionActivity.this, "Ese producto ya está en el carrito", Toast.LENGTH_LONG).show();
+                }
+
             }
         });
     }

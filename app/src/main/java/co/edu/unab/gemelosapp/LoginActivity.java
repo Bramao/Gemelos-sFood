@@ -1,5 +1,6 @@
 package co.edu.unab.gemelosapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -11,11 +12,23 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.List;
+
 public class LoginActivity extends AppCompatActivity {
 
     private EditText edtUsuario, edtContra;
     private Button btnIngresar, btnRegistrar;
     private ImageView imvLogoL;
+    private List<Usuario> usuarios;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,23 +40,38 @@ public class LoginActivity extends AppCompatActivity {
         final SharedPreferences misPreferencias = getSharedPreferences(getString(R.string.misDatos), 0);
         final Boolean logueado = misPreferencias.getBoolean("logueado", false);
 
-        if(logueado){
+        if(logueado){//Verificar si ya se había ingresado antes
             Intent in = new Intent(LoginActivity.this, MenuActivity.class);
             startActivity(in);
+            finish();
         }
 
         btnIngresar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SharedPreferences.Editor miEditor = misPreferencias.edit();
-                miEditor.putBoolean("logueado", true);
-                miEditor.apply();
+                FirebaseFirestore firestoreDB = FirebaseFirestore.getInstance();
+                firestoreDB.collection("usuarios").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {//Traer usuarios de la base de datos y compararlos con los datos ingresados
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        for(QueryDocumentSnapshot documento: task.getResult()){
+                            Usuario usuarioTmp = documento.toObject(Usuario.class);
+                            if(usuarioTmp.getNombre().equals(edtUsuario.getText().toString()) & usuarioTmp.getPass().equals(edtContra.getText().toString()) ){
+                                SharedPreferences.Editor miEditor = misPreferencias.edit();
+                                miEditor.putBoolean("logueado", true);
+                                miEditor.putString("usuario",edtUsuario.getText().toString());
+                                miEditor.apply();
 
-                Toast.makeText(LoginActivity.this,"Datos correctos", Toast.LENGTH_LONG).show();
+                                Toast.makeText(LoginActivity.this,"Datos correctos", Toast.LENGTH_SHORT).show();
 
-                Intent in = new Intent(LoginActivity.this, MenuActivity.class);
-                startActivity(in);
-                finish();
+                                Intent in =  new Intent(LoginActivity.this, MenuActivity.class);
+                                startActivity(in);
+                                finish();
+                            }else{
+                                Toast.makeText(LoginActivity.this, "Datos incorrectos.", Toast.LENGTH_LONG).show();
+                            }
+                        }
+                    }
+                });
             }
         });
 
@@ -55,6 +83,8 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+
+
 
     private void asociarElementos(){
         edtUsuario = findViewById(R.id.edt_usuario);

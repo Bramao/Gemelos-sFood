@@ -1,6 +1,8 @@
 package co.edu.unab.gemelosapp;
 
+import androidx.annotation.NonNull;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import java.io.Serializable;
@@ -8,22 +10,37 @@ import java.io.Serializable;
 @Entity(tableName = "productos")
 public class Producto implements Serializable {
 
-    @PrimaryKey(autoGenerate = true)
-    private int id;
-    private String nombre, descripcion;
+    @PrimaryKey
+    @NonNull
+    private String id;
+    private String nombre, descripcion, foto;
     private double precio;
 
-    public Producto(String nombre, String descripcion, double precio) {
+    public Producto(String nombre, String descripcion, String foto, double precio) {
         this.nombre = nombre;
         this.descripcion = descripcion;
+        this.foto = foto;
         this.precio = precio;
     }
 
-    public int getId() {
+    @Ignore
+    public Producto(){
+
+    }
+
+    public String getFoto() {
+        return foto;
+    }
+
+    public void setFoto(String foto) {
+        this.foto = foto;
+    }
+
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

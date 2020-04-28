@@ -30,7 +30,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcv_listadoC"
         android:layout_width="0dp"
-        android:layout_height="471dp"
+        android:layout_height="350dp"
         android:layout_marginStart="1dp"
         android:layout_marginTop="1dp"
         android:layout_marginEnd="1dp"
@@ -42,9 +42,29 @@
         android:id="@+id/btn_ccomprar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
         android:text="@string/txt_btn_ccomprar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rcv_listadoC" />
+
+    <TextView
+        android:id="@+id/txv_carritoVacio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="@string/txt_carritovacio"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_ccomprar" />
+
+    <TextView
+        android:id="@+id/txv_valorTotal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:text="TextView"
+        app:layout_constraintStart_toEndOf="@+id/btn_ccomprar"
         app:layout_constraintTop_toBottomOf="@+id/rcv_listadoC" />
 </androidx.constraintlayout.widget.ConstraintLayout>

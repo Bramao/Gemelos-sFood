@@ -3,15 +3,15 @@ package co.edu.unab.gemelosapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
 public class MenuActivity extends AppCompatActivity {
 
-    private Button btnBproductos, btnBcarrito;
+    private Button btnMproductos, btnMcarrito, btnMcerrarS;
     private ImageView imvLogoM;
 
     @Override
@@ -21,7 +21,7 @@ public class MenuActivity extends AppCompatActivity {
 
         this.asociarElementos();
 
-        btnBproductos.setOnClickListener(new View.OnClickListener() {
+        btnMproductos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent in = new Intent(MenuActivity.this, ListadoActivity.class);
@@ -29,18 +29,33 @@ public class MenuActivity extends AppCompatActivity {
             }
         });
 
-        btnBcarrito.setOnClickListener(new View.OnClickListener() {
+        btnMcarrito.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent in =  new Intent(MenuActivity.this, CarritoActivity.class);
                 startActivity(in);
             }
         });
+
+        btnMcerrarS.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedPreferences misPreferencias = getSharedPreferences(getString(R.string.misDatos), MODE_PRIVATE);
+                SharedPreferences.Editor miEditor = misPreferencias.edit();
+                miEditor.clear();
+                miEditor.apply();
+
+                Intent in = new Intent(MenuActivity.this, LoginActivity.class);
+                startActivity(in);
+                finish();
+            }
+        });
     }
 
     private void asociarElementos(){
-        btnBproductos = findViewById(R.id.btn_bproductos);
-        btnBcarrito = findViewById(R.id.btn_bcarrito);
+        btnMproductos = findViewById(R.id.btn_mproductos);
+        btnMcarrito = findViewById(R.id.btn_mcarrito);
         imvLogoM = findViewById(R.id.imv_logoM);
+        btnMcerrarS = findViewById(R.id.btn_mcerrars);
     }
 }

@@ -17,7 +17,7 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <Button
-        android:id="@+id/btn_bproductos"
+        android:id="@+id/btn_mproductos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
@@ -27,12 +27,23 @@
         app:layout_constraintTop_toBottomOf="@+id/imv_logoM" />
 
     <Button
-        android:id="@+id/btn_bcarrito"
+        android:id="@+id/btn_mcarrito"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:text="@string/txt_btn_bcarrito"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_bproductos" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_mproductos" />
+
+    <Button
+        android:id="@+id/btn_mcerrars"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:text="@string/txv_btn_bcerrars"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="@string/txv_btn_bcerrars" />
 </androidx.constraintlayout.widget.ConstraintLayout>

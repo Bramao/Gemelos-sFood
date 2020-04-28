@@ -20,37 +20,13 @@
         android:id="@+id/edt_rusuario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="100dp"
         android:ems="10"
         android:hint="@string/txt_txv_usuario"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imv_logoR" />
-
-    <EditText
-        android:id="@+id/edt_rnumero"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:ems="10"
-        android:hint="@string/txt_txv_rnumero"
-        android:inputType="number"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edt_rusuario" />
-
-    <EditText
-        android:id="@+id/edt_rdireccion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:ems="10"
-        android:hint="@string/txt_txv_rdireccion"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edt_rnumero" />
 
     <EditText
         android:id="@+id/edt_rcontra"
@@ -62,7 +38,18 @@
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edt_rdireccion" />
+        app:layout_constraintTop_toBottomOf="@+id/edt_rusuario" />
+
+    <EditText
+        android:id="@+id/edt_rconfirmar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:ems="10"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edt_rcontra" />
 
     <Button
         android:id="@+id/btn_rregistrar"
@@ -71,6 +58,8 @@
         android:layout_marginTop="20dp"
         android:text="@string/txt_btn_registrar"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edt_rcontra" />
+        app:layout_constraintTop_toBottomOf="@+id/edt_rconfirmar" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -54,7 +54,7 @@ public class ProductoAdapter extends RecyclerView.Adapter {
         ProductoViewHolder miHolder = (ProductoViewHolder) holder;
         final Producto miProducto = productos.get(position);
         miHolder.txvLNombre.setText(miProducto.getNombre());
-        miHolder.txvLPrecio.setText("Precio");
+        miHolder.txvLPrecio.setText("$"+miProducto.getPrecio());
         Picasso.get().load(miProducto.getFoto()).resize(70,70).into(miHolder.imvFoto);
 
 

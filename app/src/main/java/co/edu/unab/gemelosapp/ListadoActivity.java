@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -25,6 +26,7 @@ public class ListadoActivity extends AppCompatActivity {
     private ProductoAdapter miAdaptador;
     private List<Producto> productos;
     private ProductoDAO productoDAO;
+    private CarritoDAO carritoDAO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,15 +59,14 @@ public class ListadoActivity extends AppCompatActivity {
             }
         });
 
-
     }
 
     private void getData(){
         productos = productoDAO.obtenerTodos();
         if(productos.size()==0){
-            productoDAO.agregar(new Producto("Hambuerguesa", "Hamburguesa doble queso.", "https://www.faststation.net/wp-content/uploads/2018/10/Hamburguesa-Doble.jpg", 10000));
-            productoDAO.agregar(new Producto("Perro Caliente", "Perro caliente sencillo.", "https://placeralplato.com/files/2015/11/Pan-para-hot-dogs.jpg", 8000));
-            productoDAO.agregar(new Producto("Picada", "Picada de carnes", "https://img-global.cpcdn.com/recipes/bad8f40e8c33f7b7/751x532cq70/picada-sencilla-de-carnes-foto-principal.jpg", 15000));
+            productoDAO.agregar(new Producto("Hambuerguesa", "Hamburguesa doble queso.", "https://www.faststation.net/wp-content/uploads/2018/10/Hamburguesa-Doble.jpg", 10000, 0));
+            productoDAO.agregar(new Producto("Perro Caliente", "Perro caliente sencillo.", "https://placeralplato.com/files/2015/11/Pan-para-hot-dogs.jpg", 8000, 0));
+            productoDAO.agregar(new Producto("Picada", "Picada de carnes", "https://img-global.cpcdn.com/recipes/bad8f40e8c33f7b7/751x532cq70/picada-sencilla-de-carnes-foto-principal.jpg", 15000, 0));
 
             productos = productoDAO.obtenerTodos();
         }
@@ -78,6 +79,7 @@ public class ListadoActivity extends AppCompatActivity {
         miAdaptador = new ProductoAdapter(productos, new ProductoAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(Producto producto, int position) {
+
                 Intent in = new Intent(ListadoActivity.this, DescripcionActivity.class);
                 in.putExtra("producto", producto);
                 startActivity(in);

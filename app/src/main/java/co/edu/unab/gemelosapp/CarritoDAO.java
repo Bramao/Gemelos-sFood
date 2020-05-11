@@ -32,6 +32,6 @@ public interface CarritoDAO {
     @Query("SELECT * FROM productos WHERE nombre=:nombre ")
     Producto verificar(String nombre);
 
-    @Query("SELECT SUM(precio) FROM productos")
+    @Query("SELECT SUM(precio*cantidad) FROM productos")
     float getTotal();
 }

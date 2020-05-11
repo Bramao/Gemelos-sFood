@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MenuActivity">
+    tools:context=".AdminMenuActivity">
 
     <ImageView
-        android:id="@+id/imv_logoM"
+        android:id="@+id/imv_logoAM"
         android:layout_width="300dp"
         android:layout_height="100dp"
         android:layout_marginTop="20dp"
@@ -17,33 +17,32 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <Button
-        android:id="@+id/btn_mproductos"
+        android:id="@+id/btn_amproductos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
-        android:text="@string/txt_btn_bproductos"
+        android:text="@string/txt_txv_ListProductos"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imv_logoM" />
+        app:layout_constraintTop_toBottomOf="@+id/imv_logoAM" />
 
     <Button
-        android:id="@+id/btn_mcarrito"
+        android:id="@+id/btn_ampedidos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        android:text="@string/txt_btn_bcarrito"
+        android:text="@string/txt_btn_ampedidos"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_mproductos" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_amproductos" />
 
     <Button
-        android:id="@+id/btn_mcerrars"
+        android:id="@+id/btn_amcerrar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
         android:text="@string/txt_btn_mcerrars"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:text="@string/txt_btn_mcerrars" />
+        app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

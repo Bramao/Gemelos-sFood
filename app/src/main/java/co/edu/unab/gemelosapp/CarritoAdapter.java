@@ -27,7 +27,7 @@ public class CarritoAdapter extends RecyclerView.Adapter {
     }
 
     class CarritoViewHolder extends RecyclerView.ViewHolder{
-        TextView txvCnombre, txvCprecio;
+        TextView txvCnombre, txvCprecio, txvCcantidad;
         ImageView imvFotoC;
 
         public CarritoViewHolder(View itemView){
@@ -35,6 +35,7 @@ public class CarritoAdapter extends RecyclerView.Adapter {
 
             txvCnombre = itemView.findViewById(R.id.txv_cnombre);
             txvCprecio = itemView.findViewById(R.id.txv_cprecio);
+            txvCcantidad = itemView.findViewById(R.id.txv_ccantidad);
             imvFotoC = itemView.findViewById(R.id.imv_fotoC);
         }
     }
@@ -51,7 +52,8 @@ public class CarritoAdapter extends RecyclerView.Adapter {
         CarritoViewHolder miHolder = (CarritoViewHolder) holder;
         final Producto miProducto = productosC.get(position);
         miHolder.txvCnombre.setText(miProducto.getNombre());
-        miHolder.txvCprecio.setText("Precio");
+        miHolder.txvCprecio.setText("$"+miProducto.getPrecio());
+        miHolder.txvCcantidad.setText("x"+miProducto.getCantidad());
         Picasso.get().load(miProducto.getFoto()).resize(70,70).into(miHolder.imvFotoC);
 
         miHolder.itemView.setOnClickListener(new View.OnClickListener() {

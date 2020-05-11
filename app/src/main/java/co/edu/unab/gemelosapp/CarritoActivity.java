@@ -67,7 +67,7 @@ public class CarritoActivity extends AppCompatActivity {
                 verificarCarrito();
                 miAdaptador.setProductosC(productosC);
                 miAdaptador.notifyDataSetChanged();
-                txvValorTotal.setText("Total: "+(carritoDAO.getTotal()));
+                txvValorTotal.setText("Total: $"+(carritoDAO.getTotal()));
                 //miAdaptador.notifyItemRemoved(position);
             }
         });
@@ -82,7 +82,7 @@ public class CarritoActivity extends AppCompatActivity {
             btnCcomprar.setVisibility(View.VISIBLE);
             txvValorTotal.setVisibility(View.VISIBLE);
             txvCarritoVacio.setVisibility(View.INVISIBLE);
-            txvValorTotal.setText("Total: "+(carritoDAO.getTotal()));
+            txvValorTotal.setText("Total: $"+(carritoDAO.getTotal()));
 
         }
     }

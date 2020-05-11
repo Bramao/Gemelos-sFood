@@ -11,7 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CarritoActivity"></activity>
+        <activity android:name=".AdminPedidosActivity"></activity>
+        <activity android:name=".AdminEditarActivity" />
+        <activity android:name=".AdminListadoActivity" />
+        <activity android:name=".AdminMenuActivity" />
+        <activity android:name=".CarritoActivity" />
         <activity android:name=".DescripcionActivity" />
         <activity android:name=".ListadoActivity" />
         <activity android:name=".MenuActivity" />

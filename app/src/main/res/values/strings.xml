@@ -13,5 +13,10 @@
     <string name="txt_btn_dagregar">Agregar al carrito</string>
     <string name="txt_btn_ccomprar">Comprar</string>
     <string name="txt_carritovacio">Aún no has agregado productos.</string>
-    <string name="txv_btn_bcerrars">Cerrar Sesión</string>
+    <string name="txt_btn_mcerrars">Cerrar Sesión</string>
+    <string name="txt_edt_dcantidad">Cantidad: </string>
+    <string name="txt_btn_ampedidos">Listado Pedidos</string>
+    <string name="txt_btn_alagregar">Nuevo Producto</string>
+    <string name="txt_btn_aeeditar">Editar</string>
+    <string name="txt_btn_aeeliminar">Eliminar</string>
 </resources>

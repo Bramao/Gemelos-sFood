@@ -14,8 +14,17 @@ public class Producto implements Serializable {
     @NonNull
     private String id;
     private String nombre, descripcion, foto;
-    private double precio;
+    private double precio, cantidad;
 
+    public Producto(String nombre, String descripcion, String foto, double precio, double cantidad) {
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.foto = foto;
+        this.precio = precio;
+        this.cantidad = cantidad;
+    }
+
+    @Ignore
     public Producto(String nombre, String descripcion, String foto, double precio) {
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -66,5 +75,13 @@ public class Producto implements Serializable {
 
     public void setPrecio(double precio) {
         this.precio = precio;
+    }
+
+    public double getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(double cantidad) {
+        this.cantidad = cantidad;
     }
 }

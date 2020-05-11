@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AdminEditarActivity">
+    tools:context=".AdminAgregarActivity">
 
     <TextView
-        android:id="@+id/txv_aenombrep"
+        android:id="@+id/textView3"
         android:layout_width="240dp"
         android:layout_height="100dp"
         android:layout_marginTop="10dp"
@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imv_logoAE"
+        android:id="@+id/imv_logoAA"
         android:layout_width="wrap_content"
         android:layout_height="100dp"
         android:layout_marginTop="10dp"
@@ -29,7 +29,7 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <EditText
-        android:id="@+id/edt_aenombre"
+        android:id="@+id/edt_aanombre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
@@ -38,10 +38,10 @@
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txv_aenombrep" />
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <EditText
-        android:id="@+id/edt_aedescripcion"
+        android:id="@+id/edt_aadescripcion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
@@ -50,10 +50,10 @@
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edt_aenombre" />
+        app:layout_constraintTop_toBottomOf="@+id/edt_aanombre" />
 
     <EditText
-        android:id="@+id/edt_aefoto"
+        android:id="@+id/edt_aafoto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
@@ -62,10 +62,10 @@
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edt_aedescripcion" />
+        app:layout_constraintTop_toBottomOf="@+id/edt_aadescripcion" />
 
     <EditText
-        android:id="@+id/edt_aeprecio"
+        android:id="@+id/edt_aaprecio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
@@ -74,25 +74,15 @@
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edt_aefoto" />
+        app:layout_constraintTop_toBottomOf="@+id/edt_aafoto" />
 
     <Button
-        android:id="@+id/btn_aeeditar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="50dp"
-        android:text="@string/txt_btn_aeeditar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edt_aeprecio" />
-
-    <Button
-        android:id="@+id/btn_aeeliminar"
+        android:id="@+id/btn_aaagregar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        android:layout_marginEnd="50dp"
-        android:text="@string/txt_btn_aeeliminar"
+        android:text="@string/txt_btn_aaagregar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edt_aeprecio" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edt_aaprecio" />
 </androidx.constraintlayout.widget.ConstraintLayout>

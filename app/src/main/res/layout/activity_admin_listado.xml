@@ -29,6 +29,7 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcv_allistadoP"
         android:layout_width="406dp"
         android:layout_height="482dp"
         android:layout_marginStart="1dp"

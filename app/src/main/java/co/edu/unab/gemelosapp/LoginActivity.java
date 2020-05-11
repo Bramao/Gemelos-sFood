@@ -63,9 +63,17 @@ public class LoginActivity extends AppCompatActivity {
 
                                 Toast.makeText(LoginActivity.this,"Datos correctos", Toast.LENGTH_SHORT).show();
 
-                                Intent in =  new Intent(LoginActivity.this, MenuActivity.class);
-                                startActivity(in);
-                                finish();
+                                if(usuarioTmp.isAdmin()){
+                                    Intent in =  new Intent(LoginActivity.this, AdminMenuActivity.class);
+                                    startActivity(in);
+                                    finish();
+                                }else{
+                                    Intent in =  new Intent(LoginActivity.this, MenuActivity.class);
+                                    startActivity(in);
+                                    finish();
+                                }
+
+
                             }else{
                                 Toast.makeText(LoginActivity.this, "Datos incorrectos.", Toast.LENGTH_LONG).show();
                             }

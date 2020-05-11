@@ -19,4 +19,9 @@
     <string name="txt_btn_alagregar">Nuevo Producto</string>
     <string name="txt_btn_aeeditar">Editar</string>
     <string name="txt_btn_aeeliminar">Eliminar</string>
+    <string name="txt_btn_aaagregar">Agregar</string>
+    <string name="txt_edt_aanombre">Nombre</string>
+    <string name="txt_edt_aadescripcion">Descripción</string>
+    <string name="txt_edt_aafoto">Foto</string>
+    <string name="txt_edt_aaprecio">Precio</string>
 </resources>

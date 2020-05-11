@@ -9,14 +9,25 @@ public class Usuario implements Serializable {
 
     private int id;
     private String nombre, pass;
+    private boolean admin;
 
-    public Usuario(String nombre, String pass) {
+    public Usuario(String nombre, String pass ) {
         this.nombre = nombre;
         this.pass = pass;
+    }
 
+    public Usuario(String nombre, String pass, boolean admin) {
+        this.nombre = nombre;
+        this.pass = pass;
+        this.admin = admin;
     }
 
     public Usuario(){}
+
+    public boolean isAdmin() {
+        return admin;
+    }
+
 
     public int getId() {
         return id;

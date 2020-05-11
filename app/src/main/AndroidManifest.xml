@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AdminPedidosActivity"></activity>
+        <activity android:name=".AdminAgregarActivity"></activity>
+        <activity android:name=".AdminPedidosActivity" />
         <activity android:name=".AdminEditarActivity" />
         <activity android:name=".AdminListadoActivity" />
         <activity android:name=".AdminMenuActivity" />

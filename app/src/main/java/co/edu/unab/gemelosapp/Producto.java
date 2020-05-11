@@ -32,6 +32,7 @@ public class Producto implements Serializable {
         this.precio = precio;
     }
 
+
     @Ignore
     public Producto(){
 

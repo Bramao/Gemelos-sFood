@@ -1,4 +1,4 @@
-package co.edu.unab.gemelosapp;
+package co.edu.unab.gemelosapp.model.bd.local;
 
 import androidx.room.Dao;
 import androidx.room.Delete;
@@ -7,6 +7,8 @@ import androidx.room.Query;
 import androidx.room.Update;
 
 import java.util.List;
+
+import co.edu.unab.gemelosapp.model.entity.Producto;
 
 @Dao
 public interface CarritoDAO {

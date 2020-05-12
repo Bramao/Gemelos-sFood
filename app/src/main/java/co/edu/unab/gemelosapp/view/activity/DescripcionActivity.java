@@ -1,4 +1,4 @@
-package co.edu.unab.gemelosapp;
+package co.edu.unab.gemelosapp.view.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,6 +12,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
+
+import co.edu.unab.gemelosapp.model.bd.local.BaseDatosC;
+import co.edu.unab.gemelosapp.model.bd.local.CarritoDAO;
+import co.edu.unab.gemelosapp.model.entity.Producto;
+import co.edu.unab.gemelosapp.R;
 
 public class DescripcionActivity extends AppCompatActivity {
 

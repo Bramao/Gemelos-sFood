@@ -1,4 +1,4 @@
-package co.edu.unab.gemelosapp;
+package co.edu.unab.gemelosapp.view.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +12,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
+
+import co.edu.unab.gemelosapp.model.entity.Producto;
+import co.edu.unab.gemelosapp.R;
 
 public class ProductoAdapter extends RecyclerView.Adapter {
 
@@ -71,7 +74,7 @@ public class ProductoAdapter extends RecyclerView.Adapter {
         return productos.size();
     }
 
-    interface OnItemClickListener{
+    public interface OnItemClickListener{
         void onItemClick(Producto producto, int position);
     }
 }

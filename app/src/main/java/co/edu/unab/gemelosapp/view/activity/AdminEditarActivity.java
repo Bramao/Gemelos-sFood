@@ -1,6 +1,5 @@
-package co.edu.unab.gemelosapp;
+package co.edu.unab.gemelosapp.view.activity;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -9,22 +8,25 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.FirebaseFirestore;
+import co.edu.unab.gemelosapp.model.bd.network.FirestoreCallBack;
+import co.edu.unab.gemelosapp.model.entity.Producto;
+import co.edu.unab.gemelosapp.R;
+import co.edu.unab.gemelosapp.model.repository.ProductoRepository;
 
 public class AdminEditarActivity extends AppCompatActivity {
 
     private TextView txvAEnombrep;
     private EditText edtAEnombre, edtAEdescripcion, edtAEfoto, edtAEprecio;
     private Button btnAEeditar, btnAEeliminar;
+    private ProductoRepository productoRepository;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_editar);
 
         this.asociarElementos();
-
+        productoRepository = new ProductoRepository(this);
         final Producto producto = (Producto) getIntent().getSerializableExtra("producto");
 
         txvAEnombrep.setText("Editar: "+producto.getNombre());
@@ -41,10 +43,9 @@ public class AdminEditarActivity extends AppCompatActivity {
                 producto.setFoto(edtAEfoto.getText().toString());
                 producto.setPrecio(Double.parseDouble(edtAEprecio.getText().toString()));
 
-                FirebaseFirestore firestore = FirebaseFirestore.getInstance();
-                firestore.collection("productos").document(producto.getId()).set(producto).addOnCompleteListener(new OnCompleteListener<Void>() {
+                productoRepository.editarFirestore(producto, new FirestoreCallBack<Producto>() {
                     @Override
-                    public void onComplete(@NonNull Task<Void> task) {
+                    public void correcto(Producto respuesta) {
                         finish();
                     }
                 });
@@ -54,10 +55,9 @@ public class AdminEditarActivity extends AppCompatActivity {
         btnAEeliminar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FirebaseFirestore firestore = FirebaseFirestore.getInstance();
-                firestore.collection("productos").document(producto.getId()).delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+                productoRepository.eliminarFirestore(producto, new FirestoreCallBack<Producto>() {
                     @Override
-                    public void onComplete(@NonNull Task<Void> task) {
+                    public void correcto(Producto respuesta) {
                         finish();
                     }
                 });

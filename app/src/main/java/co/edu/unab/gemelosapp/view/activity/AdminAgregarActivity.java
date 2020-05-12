@@ -1,4 +1,4 @@
-package co.edu.unab.gemelosapp;
+package co.edu.unab.gemelosapp.view.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,11 +14,17 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import co.edu.unab.gemelosapp.model.bd.network.FirestoreCallBack;
+import co.edu.unab.gemelosapp.model.entity.Producto;
+import co.edu.unab.gemelosapp.R;
+import co.edu.unab.gemelosapp.model.repository.ProductoRepository;
+
 public class AdminAgregarActivity extends AppCompatActivity {
 
     private ImageView imvLogoAA;
     private EditText edtAAnombre, edtAAdescripcion, edtAAfoto, edtAAprecio;
     private Button btnAAagregar;
+    private ProductoRepository productoRepository;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,19 +32,17 @@ public class AdminAgregarActivity extends AppCompatActivity {
         setContentView(R.layout.activity_admin_agregar);
 
         this.asociarElementos();
-
+        productoRepository = new ProductoRepository(this);
         btnAAagregar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Producto nuevoProducto = new Producto(edtAAnombre.getText().toString(), edtAAdescripcion.getText().toString(), edtAAfoto.getText().toString(), Double.parseDouble(edtAAprecio.getText().toString()));
-                FirebaseFirestore firestore = FirebaseFirestore.getInstance();
-                firestore.collection("productos").add(nuevoProducto).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+                productoRepository.agregarFirestore(nuevoProducto, new FirestoreCallBack<Producto>() {
                     @Override
-                    public void onComplete(@NonNull Task<DocumentReference> task) {
+                    public void correcto(Producto respuesta) {
                         finish();
                     }
                 });
-
             }
         });
     }

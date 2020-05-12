@@ -1,8 +1,10 @@
-package co.edu.unab.gemelosapp;
+package co.edu.unab.gemelosapp.view.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import co.edu.unab.gemelosapp.R;
 
 public class AdminPedidosActivity extends AppCompatActivity {
 

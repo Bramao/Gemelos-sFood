@@ -11,17 +11,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AdminAgregarActivity"></activity>
-        <activity android:name=".AdminPedidosActivity" />
-        <activity android:name=".AdminEditarActivity" />
-        <activity android:name=".AdminListadoActivity" />
-        <activity android:name=".AdminMenuActivity" />
-        <activity android:name=".CarritoActivity" />
-        <activity android:name=".DescripcionActivity" />
-        <activity android:name=".ListadoActivity" />
-        <activity android:name=".MenuActivity" />
-        <activity android:name=".RegistroActivity" />
-        <activity android:name=".LoginActivity">
+        <activity android:name=".view.activity.AdminAgregarActivity"></activity>
+        <activity android:name=".view.activity.AdminPedidosActivity" />
+        <activity android:name=".view.activity.AdminEditarActivity" />
+        <activity android:name=".view.activity.AdminListadoActivity" />
+        <activity android:name=".view.activity.AdminMenuActivity" />
+        <activity android:name=".view.activity.CarritoActivity" />
+        <activity android:name=".view.activity.DescripcionActivity" />
+        <activity android:name=".view.activity.ListadoActivity" />
+        <activity android:name=".view.activity.MenuActivity" />
+        <activity android:name=".view.activity.RegistroActivity" />
+        <activity android:name=".view.activity.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

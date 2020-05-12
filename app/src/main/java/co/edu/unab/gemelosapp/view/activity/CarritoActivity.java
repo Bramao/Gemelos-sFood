@@ -1,19 +1,22 @@
-package co.edu.unab.gemelosapp;
+package co.edu.unab.gemelosapp.view.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.util.ArrayList;
 import java.util.List;
+
+import co.edu.unab.gemelosapp.model.bd.local.BaseDatosC;
+import co.edu.unab.gemelosapp.view.adapter.CarritoAdapter;
+import co.edu.unab.gemelosapp.model.bd.local.CarritoDAO;
+import co.edu.unab.gemelosapp.model.entity.Producto;
+import co.edu.unab.gemelosapp.R;
 
 public class CarritoActivity extends AppCompatActivity {
 

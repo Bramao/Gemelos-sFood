@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DescripcionActivity">
+    tools:context=".view.activity.DescripcionActivity">
 
     <TextView
         android:id="@+id/txv_dproducto"

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AdminEditarActivity">
+    tools:context=".view.activity.AdminEditarActivity">
 
     <TextView
         android:id="@+id/txv_aenombrep"

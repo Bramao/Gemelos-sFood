@@ -1,4 +1,4 @@
-package co.edu.unab.gemelosapp;
+package co.edu.unab.gemelosapp.view.activity;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,8 +7,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -19,22 +20,22 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListadoActivity extends AppCompatActivity {
+import co.edu.unab.gemelosapp.view.adapter.AdminListAdapter;
+import co.edu.unab.gemelosapp.model.entity.Producto;
+import co.edu.unab.gemelosapp.R;
 
-    private ImageView imvLogoL;
-    private RecyclerView rcvListadoP;
-    private ProductoAdapter miAdaptador;
+public class AdminListadoActivity extends AppCompatActivity {
+
+    private ImageView imvLogoAL;
+    private RecyclerView rcvALlistadoP;
+    private Button btn_alagregar;
+    private AdminListAdapter miAdaptador;
     private List<Producto> productos;
-    private ProductoDAO productoDAO;
-    private CarritoDAO carritoDAO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_listado);
-
-        BaseDatos bd = BaseDatos.obtenerInstancia(this);
-        productoDAO = bd.productoDAO();
+        setContentView(R.layout.activity_admin_listado);
 
         //this.getData();
         this.asociarElementos();
@@ -59,39 +60,41 @@ public class ListadoActivity extends AppCompatActivity {
             }
         });
 
+
+        btn_alagregar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent in = new Intent(AdminListadoActivity.this, AdminAgregarActivity.class);
+                startActivity(in);
+            }
+        });
     }
 
-    private void getData(){
-        productos = productoDAO.obtenerTodos();
-        if(productos.size()==0){
-            productoDAO.agregar(new Producto("Hambuerguesa", "Hamburguesa doble queso.", "https://www.faststation.net/wp-content/uploads/2018/10/Hamburguesa-Doble.jpg", 10000, 0));
-            productoDAO.agregar(new Producto("Perro Caliente", "Perro caliente sencillo.", "https://placeralplato.com/files/2015/11/Pan-para-hot-dogs.jpg", 8000, 0));
-            productoDAO.agregar(new Producto("Picada", "Picada de carnes", "https://img-global.cpcdn.com/recipes/bad8f40e8c33f7b7/751x532cq70/picada-sencilla-de-carnes-foto-principal.jpg", 15000, 0));
 
-            productos = productoDAO.obtenerTodos();
-        }
+    private void getData(){
 
     }
 
     private void controlAdaptador(){
         RecyclerView.LayoutManager manager = new LinearLayoutManager(getApplicationContext());
 
-        miAdaptador = new ProductoAdapter(productos, new ProductoAdapter.OnItemClickListener() {
+        miAdaptador = new AdminListAdapter(productos, new AdminListAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(Producto producto, int position) {
 
-                Intent in = new Intent(ListadoActivity.this, DescripcionActivity.class);
+                Intent in = new Intent(AdminListadoActivity.this, AdminEditarActivity.class);
                 in.putExtra("producto", producto);
                 startActivity(in);
             }
         });
 
-        rcvListadoP.setLayoutManager(manager);
-        rcvListadoP.setAdapter(miAdaptador);
+        rcvALlistadoP.setLayoutManager(manager);
+        rcvALlistadoP.setAdapter(miAdaptador);
     }
 
     private void asociarElementos(){
-        imvLogoL = findViewById(R.id.imv_logoList);
-        rcvListadoP = findViewById(R.id.rcv_listadoP);
+        imvLogoAL = findViewById(R.id.imv_logoAL);
+        rcvALlistadoP = findViewById(R.id.rcv_allistadoP);
+        btn_alagregar =  findViewById(R.id.btn_alagregar);
     }
 }

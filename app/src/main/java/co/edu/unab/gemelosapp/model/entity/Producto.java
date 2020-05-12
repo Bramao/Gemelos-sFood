@@ -1,4 +1,4 @@
-package co.edu.unab.gemelosapp;
+package co.edu.unab.gemelosapp.model.entity;
 
 import androidx.annotation.NonNull;
 import androidx.room.Entity;

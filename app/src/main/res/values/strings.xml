@@ -24,4 +24,9 @@
     <string name="txt_edt_aadescripcion">Descripción</string>
     <string name="txt_edt_aafoto">Foto</string>
     <string name="txt_edt_aaprecio">Precio</string>
+    <string name="txt_txv_appedidos">Listado Pedidos</string>
+    <string name="txt_btn_apdterminar">Terminar Pedido</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

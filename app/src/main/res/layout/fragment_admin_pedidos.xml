@@ -2,12 +2,27 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout7"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.activity.ListadoActivity">
+    tools:context=".view.fragment.AdminPedidosFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:id="@+id/txv_appedidos"
+        android:layout_width="240dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/txt_txv_appedidos"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imv_logoList"
+        android:id="@+id/imv_logoAP"
         android:layout_width="wrap_content"
         android:layout_height="100dp"
         android:layout_marginTop="10dp"
@@ -16,28 +31,14 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rcv_listadoP"
+        android:id="@+id/rcv_aplistado"
         android:layout_width="409dp"
-        android:layout_height="604dp"
+        android:layout_height="581dp"
         android:layout_marginStart="1dp"
         android:layout_marginTop="1dp"
         android:layout_marginEnd="1dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txv_listproductos" />
-
-    <TextView
-        android:id="@+id/txv_listproductos"
-        android:layout_width="241dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="10dp"
-        android:text="@string/txt_txv_ListProductos"
-        android:textAlignment="center"
-        android:textAllCaps="true"
-        android:textColor="#474545"
-        android:textSize="30dp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/txv_appedidos" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,10 +2,12 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.activity.CarritoActivity">
+    tools:context=".view.fragment.UsuarioCarritoFragment">
 
+    <!-- TODO: Update blank fragment layout -->
     <TextView
         android:id="@+id/txv_ccarrito"
         android:layout_width="wrap_content"
@@ -67,4 +69,5 @@
         android:text="TextView"
         app:layout_constraintStart_toEndOf="@+id/btn_ccomprar"
         app:layout_constraintTop_toBottomOf="@+id/rcv_listadoC" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

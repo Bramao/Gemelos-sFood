@@ -1,25 +1,68 @@
 package co.edu.unab.gemelosapp.model.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class Pedido implements Serializable {
 
-    private int id;
-    private String nombreu, nombrep, descripcion;
-    private double cantidad;
+    private String id;
+    private String nombreu;
+    private int cantidad;
+    private boolean confirmacion, finalizado;
+    private List<Producto> misProductos;
 
-    public Pedido(String nombreu, String nombrep, String descripcion, double cantidad) {
+    public Pedido(String nombreu, List<Producto> misProductos, int cantidad) {
         this.nombreu = nombreu;
-        this.nombrep = nombrep;
-        this.descripcion = descripcion;
+        this.misProductos = misProductos;
         this.cantidad = cantidad;
     }
 
-    public int getId() {
+    public Pedido(boolean confirmacion, boolean finalizado){
+        this.confirmacion = confirmacion;
+        this.finalizado = finalizado;
+    }
+
+    public Pedido(){
+
+    }
+
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    public boolean isConfirmacion() {
+        return confirmacion;
+    }
+
+    public void setConfirmacion(boolean confirmacion) {
+        this.confirmacion = confirmacion;
+    }
+
+    public boolean isFinalizado() {
+        return finalizado;
+    }
+
+    public void setFinalizado(boolean finalizado) {
+        this.finalizado = finalizado;
+    }
+
+    public List<Producto> getMisProductos() {
+        return misProductos;
+    }
+
+    public void setMisProductos(List<Producto> misProductos) {
+        this.misProductos = misProductos;
+    }
+
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -31,27 +74,5 @@ public class Pedido implements Serializable {
         this.nombreu = nombreu;
     }
 
-    public String getNombrep() {
-        return nombrep;
-    }
 
-    public void setNombrep(String nombrep) {
-        this.nombrep = nombrep;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
-    public double getCantidad() {
-        return cantidad;
-    }
-
-    public void setCantidad(double cantidad) {
-        this.cantidad = cantidad;
-    }
 }

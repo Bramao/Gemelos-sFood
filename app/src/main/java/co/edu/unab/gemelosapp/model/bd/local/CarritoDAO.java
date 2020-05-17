@@ -36,4 +36,7 @@ public interface CarritoDAO {
 
     @Query("SELECT SUM(precio*cantidad) FROM productos")
     float getTotal();
+
+    @Query("SELECT SUM(cantidad) FROM productos")
+    int getCantidad();
 }

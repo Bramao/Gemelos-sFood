@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navegacion_usuario"
+    app:startDestination="@id/usuarioMenuFragment">
+
+    <fragment
+        android:id="@+id/usuarioMenuFragment"
+        android:name="co.edu.unab.gemelosapp.view.fragment.UsuarioMenuFragment"
+        android:label="fragment_usuario_menu"
+        tools:layout="@layout/fragment_usuario_menu" >
+        <action
+            android:id="@+id/action_usuarioMenuFragment_to_usuarioListadoFragment"
+            app:destination="@id/usuarioListadoFragment" />
+        <action
+            android:id="@+id/action_usuarioMenuFragment_to_usuarioCarritoFragment"
+            app:destination="@id/usuarioCarritoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/usuarioCarritoFragment"
+        android:name="co.edu.unab.gemelosapp.view.fragment.UsuarioCarritoFragment"
+        android:label="fragment_usuario_carrito"
+        tools:layout="@layout/fragment_usuario_carrito" >
+        <action
+            android:id="@+id/action_usuarioCarritoFragment_to_usuarioMenuFragment"
+            app:destination="@id/usuarioMenuFragment" />
+        <argument
+            android:name="producto"
+            app:argType="co.edu.unab.gemelosapp.model.entity.Producto"
+            app:nullable="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/usuarioDescripcionFragment"
+        android:name="co.edu.unab.gemelosapp.view.fragment.UsuarioDescripcionFragment"
+        android:label="fragment_usuario_descripcion"
+        tools:layout="@layout/fragment_usuario_descripcion" >
+        <action
+            android:id="@+id/action_usuarioDescripcionFragment_to_usuarioCarritoFragment"
+            app:destination="@id/usuarioCarritoFragment"
+            app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/action_usuarioDescripcionFragment_to_usuarioListadoFragment"
+            app:destination="@id/usuarioListadoFragment" />
+        <argument
+            android:name="producto"
+            app:argType="co.edu.unab.gemelosapp.model.entity.Producto" />
+    </fragment>
+    <fragment
+        android:id="@+id/usuarioListadoFragment"
+        android:name="co.edu.unab.gemelosapp.view.fragment.UsuarioListadoFragment"
+        android:label="fragment_usuario_listado"
+        tools:layout="@layout/fragment_usuario_listado" >
+        <action
+            android:id="@+id/action_usuarioListadoFragment_to_usuarioDescripcionFragment"
+            app:destination="@id/usuarioDescripcionFragment" />
+        <action
+            android:id="@+id/action_usuarioListadoFragment_to_usuarioMenuFragment"
+            app:destination="@id/usuarioMenuFragment" />
+    </fragment>
+</navigation>

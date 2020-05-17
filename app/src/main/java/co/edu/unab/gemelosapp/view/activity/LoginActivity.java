@@ -22,13 +22,13 @@ import java.util.List;
 
 import co.edu.unab.gemelosapp.R;
 import co.edu.unab.gemelosapp.model.entity.Usuario;
+import co.edu.unab.gemelosapp.view.fragment.UsuarioMenuFragment;
 
 public class LoginActivity extends AppCompatActivity {
 
     private EditText edtUsuario, edtContra;
     private Button btnIngresar, btnRegistrar;
     private ImageView imvLogoL;
-    private List<Usuario> usuarios;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +40,7 @@ public class LoginActivity extends AppCompatActivity {
         final SharedPreferences misPreferencias = getSharedPreferences(getString(R.string.misDatos), 0);
         final Boolean logueado = misPreferencias.getBoolean("logueado", false);
 
-        if(logueado){//Verificar si ya se había ingresado antes
+        if(logueado){
             Intent in = new Intent(LoginActivity.this, MenuActivity.class);
             startActivity(in);
             finish();
@@ -61,7 +61,7 @@ public class LoginActivity extends AppCompatActivity {
                                 miEditor.putString("usuario",edtUsuario.getText().toString());
                                 miEditor.apply();
 
-                                Toast.makeText(LoginActivity.this,"Datos correctos", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(LoginActivity.this,"Bienvenido "+edtUsuario.getText(), Toast.LENGTH_SHORT).show();
 
                                 if(usuarioTmp.isAdmin()){
                                     Intent in =  new Intent(LoginActivity.this, AdminMenuActivity.class);
@@ -75,7 +75,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
                             }else{
-                                Toast.makeText(LoginActivity.this, "Datos incorrectos.", Toast.LENGTH_LONG).show();
+                                //Toast.makeText(LoginActivity.this, "Datos incorrectos.", Toast.LENGTH_LONG).show();
                             }
                         }
                     }

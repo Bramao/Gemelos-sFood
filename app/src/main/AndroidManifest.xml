@@ -11,14 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.activity.AdminAgregarActivity"></activity>
-        <activity android:name=".view.activity.AdminPedidosActivity" />
-        <activity android:name=".view.activity.AdminEditarActivity" />
-        <activity android:name=".view.activity.AdminListadoActivity" />
         <activity android:name=".view.activity.AdminMenuActivity" />
-        <activity android:name=".view.activity.CarritoActivity" />
-        <activity android:name=".view.activity.DescripcionActivity" />
-        <activity android:name=".view.activity.ListadoActivity" />
         <activity android:name=".view.activity.MenuActivity" />
         <activity android:name=".view.activity.RegistroActivity" />
         <activity android:name=".view.activity.LoginActivity">

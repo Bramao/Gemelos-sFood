@@ -27,7 +27,7 @@ public class AdminPedidosAdapter extends RecyclerView.Adapter {
     }
 
     class AdminPedidosViewHolder extends RecyclerView.ViewHolder{
-        TextView txvAPnombreu, txvAPcantidad, txvAPestado;
+        TextView txvAPnombreu, txvAPcantidad, txvAPestado, txvAPdomicilio;
 
         public AdminPedidosViewHolder(View itemView){
             super(itemView);
@@ -35,6 +35,7 @@ public class AdminPedidosAdapter extends RecyclerView.Adapter {
             txvAPnombreu = itemView.findViewById(R.id.txv_apnombreu);
             txvAPcantidad = itemView.findViewById(R.id.txv_apcantidad);
             txvAPestado = itemView.findViewById(R.id.txv_apestado);
+            txvAPdomicilio = itemView.findViewById(R.id.txv_apdomicilio);
         }
     }
 
@@ -50,9 +51,10 @@ public class AdminPedidosAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, final int position) {
         AdminPedidosViewHolder miHolder = (AdminPedidosViewHolder) holder;
         final Pedido miPedido = pedidos.get(position);
-        miHolder.txvAPnombreu.setText(miPedido.getNombreu());
-        miHolder.txvAPcantidad.setText(String.valueOf(miPedido.getCantidad()));
-        miHolder.txvAPestado.setText(String.valueOf(miPedido.isConfirmacion()));
+        miHolder.txvAPnombreu.setText("Cliente: "+miPedido.getNombreu());
+        miHolder.txvAPcantidad.setText("Cantidad de productos: "+miPedido.getCantidad());
+        miHolder.txvAPestado.setText("Estado: "+miPedido.isFinalizado());
+        miHolder.txvAPdomicilio.setText("Domicilio: "+miPedido.isDomicilio());
 
         miHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

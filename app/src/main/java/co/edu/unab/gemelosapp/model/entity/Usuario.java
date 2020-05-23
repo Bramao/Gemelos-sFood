@@ -7,7 +7,9 @@ import java.io.Serializable;
 
 public class Usuario implements Serializable {
 
-    private String nombre, pass;
+    private String id;
+    private String nombre, pass, direccion;
+    private int numero;
     private boolean admin;
 
     public Usuario(String nombre, String pass ) {
@@ -18,6 +20,34 @@ public class Usuario implements Serializable {
     public Usuario(String nombre, String pass, boolean admin) {
         this.nombre = nombre;
         this.pass = pass;
+        this.admin = admin;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public int getNumero() {
+        return numero;
+    }
+
+    public void setNumero(int numero) {
+        this.numero = numero;
+    }
+
+    public void setAdmin(boolean admin) {
         this.admin = admin;
     }
 

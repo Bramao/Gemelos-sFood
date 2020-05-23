@@ -26,15 +26,15 @@ import co.edu.unab.gemelosapp.view.adapter.ProductoAdapter;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class UsuarioListadoFragment extends Fragment {
+public class UsuarioListadoEFragment extends Fragment {
 
-    private ImageView imvLogoL;
-    private RecyclerView rcvListadoP;
+    private ImageView imvLogoLE;
+    private RecyclerView rcvListadoE;
     private ProductoAdapter miAdaptador;
     private List<Producto> productos;
     private ProductoRepository productoRepository;
 
-    public UsuarioListadoFragment() {
+    public UsuarioListadoEFragment() {
         // Required empty public constructor
     }
 
@@ -46,9 +46,9 @@ public class UsuarioListadoFragment extends Fragment {
         productos =new ArrayList<>();
         this.controlAdaptador();
         RecyclerView.LayoutManager manager = new LinearLayoutManager(getContext());
-        rcvListadoP.setLayoutManager(manager);
-        rcvListadoP.setAdapter(miAdaptador);
-        rcvListadoP.setHasFixedSize(true);
+        rcvListadoE.setLayoutManager(manager);
+        rcvListadoE.setAdapter(miAdaptador);
+        rcvListadoE.setHasFixedSize(true);
         this.getDataFirestore();
     }
 
@@ -56,13 +56,13 @@ public class UsuarioListadoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view =  inflater.inflate(R.layout.fragment_usuario_listado, container, false);
+        View view = inflater.inflate(R.layout.fragment_usuario_listado_e, container, false);
         this.asociarElementos(view);
         return view;
     }
 
     private void getDataFirestore(){
-        productoRepository.escucharTodosP(new FirestoreCallBack<List<Producto>>() {
+        productoRepository.escucharTodosE(new FirestoreCallBack<List<Producto>>() {
             @Override
             public void correcto(List<Producto> respuesta) {
                 miAdaptador.setProductos(respuesta);
@@ -76,14 +76,14 @@ public class UsuarioListadoFragment extends Fragment {
             @Override
             public void onItemClick(Producto producto, int position) {
 
-                Navigation.findNavController(getView()).navigate(UsuarioListadoFragmentDirections.actionUsuarioListadoFragmentToUsuarioDescripcionFragment(producto));
+                Navigation.findNavController(getView()).navigate(UsuarioListadoEFragmentDirections.actionUsuarioListadoEFragmentToUsuarioDescripcionFragment(producto));
 
             }
         });
     }
 
     private void asociarElementos(View view){
-        imvLogoL = view.findViewById(R.id.imv_logoList);
-        rcvListadoP = view.findViewById(R.id.rcv_listadoP);
+        imvLogoLE = view.findViewById(R.id.imv_logoLE);
+        rcvListadoE = view.findViewById(R.id.rcv_listadoE);
     }
 }

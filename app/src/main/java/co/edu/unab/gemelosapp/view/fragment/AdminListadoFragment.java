@@ -44,19 +44,34 @@ public class AdminListadoFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        productoRepository = new ProductoRepository(getContext());
-        productos = new ArrayList<>();
-        this.controlAdaptador();
-        RecyclerView.LayoutManager manager = new LinearLayoutManager(getContext());
-        rcvALlistadoP.setLayoutManager(manager);
-        rcvALlistadoP.setAdapter(miAdaptador);
-        rcvALlistadoP.setHasFixedSize(true);
-        this.getDataFirestore();
+        final boolean isExtra = AdminListadoFragmentArgs.fromBundle(getArguments()).getIsExtra();
+
+        if(isExtra){
+            productoRepository = new ProductoRepository(getContext());
+            productos = new ArrayList<>();
+            this.controlAdaptador();
+            RecyclerView.LayoutManager manager = new LinearLayoutManager(getContext());
+            rcvALlistadoP.setLayoutManager(manager);
+            rcvALlistadoP.setAdapter(miAdaptador);
+            rcvALlistadoP.setHasFixedSize(true);
+            this.getDataFirestoreE();
+        }else {
+            productoRepository = new ProductoRepository(getContext());
+            productos = new ArrayList<>();
+            this.controlAdaptador();
+            RecyclerView.LayoutManager manager = new LinearLayoutManager(getContext());
+            rcvALlistadoP.setLayoutManager(manager);
+            rcvALlistadoP.setAdapter(miAdaptador);
+            rcvALlistadoP.setHasFixedSize(true);
+            this.getDataFirestoreP();
+        }
+
+
 
         btn_alagregar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Navigation.findNavController(getView()).navigate(AdminListadoFragmentDirections.actionAdminListadoFragmentToAdminAgregarFragment());
+                Navigation.findNavController(getView()).navigate(AdminListadoFragmentDirections.actionAdminListadoFragmentToAdminAgregarFragment(isExtra));
             }
         });
     }
@@ -70,8 +85,18 @@ public class AdminListadoFragment extends Fragment {
         return view;
     }
 
-    private void getDataFirestore(){
-        productoRepository.escucharTodos(new FirestoreCallBack<List<Producto>>() {
+    private void getDataFirestoreP(){
+        productoRepository.escucharTodosP(new FirestoreCallBack<List<Producto>>() {
+            @Override
+            public void correcto(List<Producto> respuesta) {
+                miAdaptador.setProductos(respuesta);
+                miAdaptador.notifyDataSetChanged();
+            }
+        });
+    }
+
+    private void getDataFirestoreE(){
+        productoRepository.escucharTodosE(new FirestoreCallBack<List<Producto>>() {
             @Override
             public void correcto(List<Producto> respuesta) {
                 miAdaptador.setProductos(respuesta);

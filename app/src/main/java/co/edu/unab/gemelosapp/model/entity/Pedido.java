@@ -8,7 +8,7 @@ public class Pedido implements Serializable {
     private String id;
     private String nombreu;
     private int cantidad;
-    private boolean confirmacion, finalizado;
+    private boolean confirmacion, finalizado, domicilio;
     private List<Producto> misProductos;
 
     public Pedido(String nombreu, List<Producto> misProductos, int cantidad) {
@@ -24,6 +24,14 @@ public class Pedido implements Serializable {
 
     public Pedido(){
 
+    }
+
+    public boolean isDomicilio() {
+        return domicilio;
+    }
+
+    public void setDomicilio(boolean domicilio) {
+        this.domicilio = domicilio;
     }
 
     public int getCantidad() {

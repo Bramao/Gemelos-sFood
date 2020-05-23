@@ -15,6 +15,7 @@ public class Producto implements Serializable {
     private String id;
     private String nombre, descripcion, foto;
     private double precio, cantidad;
+    private boolean extra;
 
     public Producto(String nombre, String descripcion, String foto, double precio, double cantidad) {
         this.nombre = nombre;
@@ -25,17 +26,26 @@ public class Producto implements Serializable {
     }
 
     @Ignore
-    public Producto(String nombre, String descripcion, String foto, double precio) {
+    public Producto(String nombre, String descripcion, double precio, boolean extra) {
         this.nombre = nombre;
         this.descripcion = descripcion;
-        this.foto = foto;
+        this.foto = " ";
         this.precio = precio;
+        this.extra = extra;
     }
 
 
     @Ignore
     public Producto(){
 
+    }
+
+    public boolean isExtra() {
+        return extra;
+    }
+
+    public void setExtra(boolean extra) {
+        this.extra = extra;
     }
 
     public String getFoto() {

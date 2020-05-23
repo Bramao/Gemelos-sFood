@@ -8,6 +8,7 @@ import androidx.annotation.Nullable;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
@@ -44,6 +45,18 @@ public class PedidoRepository {
         });
     }
 
+    public void obtenerPedido(final Pedido pedido, final FirestoreCallBack<Pedido> firestoreCallBack){
+        DocumentReference documentReference = firebaseFirestore.collection("pedidos").document(pedido.getId());
+        documentReference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+               if (task.isComplete()){
+                   firestoreCallBack.correcto(pedido);
+               }
+            }
+        });
+    }
+
     public void agregarFirestore(final Pedido pedido, final FirestoreCallBack<Pedido> firestoreCallBack){
         firebaseFirestore.collection("pedidos").add(pedido).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
             @Override
@@ -53,6 +66,16 @@ public class PedidoRepository {
                 }
             }
         });
+    }
 
+    public void eliminarFirestore(final Pedido pedido, final FirestoreCallBack<Pedido> firestoreCallBack){
+        firebaseFirestore.collection("pedidos").document(pedido.getId()).delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(task.isComplete()){
+                    firestoreCallBack.correcto(pedido);
+                }
+            }
+        });
     }
 }

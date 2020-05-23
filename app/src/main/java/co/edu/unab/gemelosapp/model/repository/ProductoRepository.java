@@ -1,6 +1,7 @@
 package co.edu.unab.gemelosapp.model.repository;
 
 import android.content.Context;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -27,7 +28,7 @@ public class ProductoRepository {
         firebaseFirestore = FirebaseFirestore.getInstance();
     }
 
-    public void escucharTodos(final FirestoreCallBack<List<Producto>> firestoreCallBack){
+    public void escucharTodosP(final FirestoreCallBack<List<Producto>> firestoreCallBack){
         firebaseFirestore.collection("productos").addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
@@ -35,8 +36,35 @@ public class ProductoRepository {
                 if(queryDocumentSnapshots != null){
                     for(QueryDocumentSnapshot documento: queryDocumentSnapshots){
                         Producto miProducto = documento.toObject(Producto.class);
-                        miProducto.setId(documento.getId());
-                        productos.add(miProducto);
+                        if(!miProducto.isExtra()){
+                            miProducto.setId(documento.getId());
+                            productos.add(miProducto);
+                            Log.d("Productos", miProducto.getNombre()+" es producto.");
+                        }else {
+                            Log.d("Productos", miProducto.getNombre()+" es extra.");
+                        }
+                    }
+                }
+                firestoreCallBack.correcto(productos);
+            }
+        });
+    }
+
+    public void escucharTodosE(final FirestoreCallBack<List<Producto>> firestoreCallBack){
+        firebaseFirestore.collection("productos").addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
+                List<Producto> productos = new ArrayList<>();
+                if(queryDocumentSnapshots != null){
+                    for(QueryDocumentSnapshot documento: queryDocumentSnapshots){
+                        Producto miProducto = documento.toObject(Producto.class);
+                        if(miProducto.isExtra()){
+                            miProducto.setId(documento.getId());
+                            productos.add(miProducto);
+                            Log.d("Productos", miProducto.getNombre()+" es extra.");
+                        }else {
+                            Log.d("Productos", miProducto.getNombre()+" es producto.");
+                        }
                     }
                 }
                 firestoreCallBack.correcto(productos);

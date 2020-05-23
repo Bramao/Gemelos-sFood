@@ -34,13 +34,13 @@
         android:id="@+id/edt_aanombre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="10dp"
         android:ems="10"
         android:hint="@string/txt_edt_aanombre"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintTop_toBottomOf="@+id/imv_aafoto" />
 
     <EditText
         android:id="@+id/edt_aadescripcion"
@@ -55,18 +55,6 @@
         app:layout_constraintTop_toBottomOf="@+id/edt_aanombre" />
 
     <EditText
-        android:id="@+id/edt_aafoto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:ems="10"
-        android:hint="@string/txt_edt_aafoto"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edt_aadescripcion" />
-
-    <EditText
         android:id="@+id/edt_aaprecio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -76,16 +64,46 @@
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edt_aafoto" />
+        app:layout_constraintTop_toBottomOf="@+id/edt_aadescripcion" />
 
     <Button
         android:id="@+id/btn_aaagregar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
         android:text="@string/txt_btn_aaagregar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edt_aaprecio" />
+
+    <ImageView
+        android:id="@+id/imv_aafoto"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        tools:src="@tools:sample/avatars" />
+
+    <ImageButton
+        android:id="@+id/bi_camara"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:src="@drawable/ic_photo_camera"
+        app:layout_constraintBottom_toTopOf="@+id/edt_aanombre"
+        app:layout_constraintEnd_toStartOf="@+id/imv_aafoto"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/bi_galeria"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:src="@drawable/ic_image"
+        app:layout_constraintBottom_toTopOf="@+id/edt_aanombre"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imv_aafoto" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

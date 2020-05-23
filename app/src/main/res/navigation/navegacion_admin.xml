@@ -24,7 +24,12 @@
         tools:layout="@layout/fragment_admin_agregar" >
         <action
             android:id="@+id/action_adminAgregarFragment_to_adminListadoFragment"
-            app:destination="@id/adminListadoFragment" />
+            app:destination="@id/adminListadoFragment"
+            app:popUpTo="@id/adminListadoFragment"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="isExtra"
+            app:argType="boolean" />
     </fragment>
     <fragment
         android:id="@+id/adminEditarFragment"
@@ -33,7 +38,9 @@
         tools:layout="@layout/fragment_admin_editar" >
         <action
             android:id="@+id/action_adminEditarFragment_to_adminListadoFragment"
-            app:destination="@id/adminListadoFragment" />
+            app:destination="@id/adminListadoFragment"
+            app:popUpTo="@id/adminListadoFragment"
+            app:popUpToInclusive="true" />
         <argument
             android:name="producto"
             app:argType="co.edu.unab.gemelosapp.model.entity.Producto" />
@@ -52,6 +59,9 @@
         <action
             android:id="@+id/action_adminListadoFragment_to_adminMenuFragment"
             app:destination="@id/adminMenuFragment" />
+        <argument
+            android:name="isExtra"
+            app:argType="boolean" />
     </fragment>
     <fragment
         android:id="@+id/adminPedidosFragment"
@@ -72,7 +82,9 @@
         tools:layout="@layout/fragment_admin_pedidos_d" >
         <action
             android:id="@+id/action_adminPedidosDFragment_to_adminPedidosFragment"
-            app:destination="@id/adminPedidosFragment" />
+            app:destination="@id/adminPedidosFragment"
+            app:popUpTo="@id/adminPedidosFragment"
+            app:popUpToInclusive="true" />
         <argument
             android:name="pedido"
             app:argType="co.edu.unab.gemelosapp.model.entity.Pedido" />

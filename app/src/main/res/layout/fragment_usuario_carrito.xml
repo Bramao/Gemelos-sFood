@@ -48,6 +48,16 @@
         android:layout_marginTop="10dp"
         android:text="@string/txt_btn_ccomprar"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_ucextras" />
+
+    <Button
+        android:id="@+id/btn_ucextras"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/txt_btn_ucextras"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rcv_listadoC" />
 
     <TextView
@@ -68,6 +78,6 @@
         android:layout_marginTop="20dp"
         android:text="TextView"
         app:layout_constraintStart_toEndOf="@+id/btn_ccomprar"
-        app:layout_constraintTop_toBottomOf="@+id/rcv_listadoC" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_ucextras" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

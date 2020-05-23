@@ -39,11 +39,18 @@ public class LoginActivity extends AppCompatActivity {
 
         final SharedPreferences misPreferencias = getSharedPreferences(getString(R.string.misDatos), 0);
         final Boolean logueado = misPreferencias.getBoolean("logueado", false);
+        Boolean admin = misPreferencias.getBoolean("admin", false);
 
         if(logueado){
-            Intent in = new Intent(LoginActivity.this, MenuActivity.class);
-            startActivity(in);
-            finish();
+            if(admin){
+                Intent in =  new Intent(LoginActivity.this, AdminMenuActivity.class);
+                startActivity(in);
+                finish();
+            }else{
+                Intent in = new Intent(LoginActivity.this, MenuActivity.class);
+                startActivity(in);
+                finish();
+            }
         }
 
         btnIngresar.setOnClickListener(new View.OnClickListener() {
@@ -64,10 +71,14 @@ public class LoginActivity extends AppCompatActivity {
                                 Toast.makeText(LoginActivity.this,"Bienvenido "+edtUsuario.getText(), Toast.LENGTH_SHORT).show();
 
                                 if(usuarioTmp.isAdmin()){
+                                    miEditor.putBoolean("admin", true);
+                                    miEditor.apply();
                                     Intent in =  new Intent(LoginActivity.this, AdminMenuActivity.class);
                                     startActivity(in);
                                     finish();
                                 }else{
+                                    miEditor.putBoolean("admin", false);
+                                    miEditor.apply();
                                     Intent in =  new Intent(LoginActivity.this, MenuActivity.class);
                                     startActivity(in);
                                     finish();

@@ -2,38 +2,38 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/frameLayout7"
+    android:id="@+id/frameLayout11"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.fragment.AdminPedidosFragment">
+    tools:context=".view.fragment.UsuarioListadoEFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:id="@+id/txv_appedidos"
-        android:layout_width="240dp"
+        android:id="@+id/txv_listextras"
+        android:layout_width="wrap_content"
         android:layout_height="100dp"
         android:layout_marginTop="10dp"
-        android:text="@string/txt_txv_appedidos"
+        android:text="@string/txt_txv_listextras"
         android:textAlignment="center"
         android:textAllCaps="true"
+        android:textColor="#040404"
         android:textSize="30dp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imv_logoAP"
+        android:id="@+id/imv_logoLE"
         android:layout_width="wrap_content"
         android:layout_height="100dp"
         android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
+        tools:src="@tools:sample/avatars" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rcv_aplistado"
+        android:id="@+id/rcv_listadoE"
         android:layout_width="409dp"
-        android:layout_height="581dp"
+        android:layout_height="600dp"
         android:layout_marginStart="1dp"
         android:layout_marginTop="1dp"
         android:layout_marginEnd="1dp"
@@ -41,6 +41,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txv_appedidos" />
-
+        app:layout_constraintTop_toBottomOf="@+id/imv_logoLE" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,65 +2,75 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout13"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.activity.RegistroActivity">
+    tools:context=".view.fragment.UsuarioDomicilioFragment">
+
+    <TextView
+        android:id="@+id/txv_uddomicilio"
+        android:layout_width="250dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/txt_txv_uddomicilio"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imv_logoR"
-        android:layout_width="300dp"
+        android:id="@+id/imv_logoUD"
+        android:layout_width="wrap_content"
         android:layout_height="100dp"
         android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
+        tools:src="@tools:sample/avatars" />
 
-    <EditText
-        android:id="@+id/edt_rusuario"
+    <TextView
+        android:id="@+id/txv_uddatos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="50dp"
+        android:text="@string/txt_txv_uddatos"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txv_uddomicilio" />
+
+    <EditText
+        android:id="@+id/edt_uddireccion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
         android:ems="10"
-        android:hint="@string/txt_txv_usuario"
+        android:hint="@string/txt_edt_uddireccion"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imv_logoR" />
+        app:layout_constraintTop_toBottomOf="@+id/txv_uddatos" />
 
     <EditText
-        android:id="@+id/edt_rcontra"
+        android:id="@+id/edt_udnumero"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:ems="10"
-        android:hint="@string/txt_txv_contraseña"
-        android:inputType="textPassword"
+        android:hint="@string/txt_edt_udnumero"
+        android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edt_rusuario" />
-
-    <EditText
-        android:id="@+id/edt_rconfirmar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:ems="10"
-        android:hint="@string/txt_txv_contraseña"
-        android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edt_rcontra" />
+        app:layout_constraintTop_toBottomOf="@+id/edt_uddireccion" />
 
     <Button
-        android:id="@+id/btn_rregistrar"
+        android:id="@+id/btn_udrealizar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="@string/txt_btn_registrar"
+        android:text="@string/txt_btn_udrealizar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edt_rconfirmar" />
-
+        app:layout_constraintTop_toBottomOf="@+id/edt_udnumero" />
 </androidx.constraintlayout.widget.ConstraintLayout>

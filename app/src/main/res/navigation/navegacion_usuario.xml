@@ -24,11 +24,19 @@
         tools:layout="@layout/fragment_usuario_carrito" >
         <action
             android:id="@+id/action_usuarioCarritoFragment_to_usuarioMenuFragment"
-            app:destination="@id/usuarioMenuFragment" />
+            app:destination="@id/usuarioMenuFragment"
+            app:popUpTo="@id/usuarioMenuFragment"
+            app:popUpToInclusive="true" />
         <argument
             android:name="producto"
             app:argType="co.edu.unab.gemelosapp.model.entity.Producto"
             app:nullable="true" />
+        <action
+            android:id="@+id/action_usuarioCarritoFragment_to_usuarioListadoEFragment"
+            app:destination="@id/usuarioListadoEFragment" />
+        <action
+            android:id="@+id/action_usuarioCarritoFragment_to_usuarioEntregaFragment"
+            app:destination="@id/usuarioEntregaFragment" />
     </fragment>
     <fragment
         android:id="@+id/usuarioDescripcionFragment"
@@ -38,10 +46,13 @@
         <action
             android:id="@+id/action_usuarioDescripcionFragment_to_usuarioCarritoFragment"
             app:destination="@id/usuarioCarritoFragment"
-            app:popUpToInclusive="false" />
+            app:popUpTo="@id/usuarioCarritoFragment"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_usuarioDescripcionFragment_to_usuarioListadoFragment"
-            app:destination="@id/usuarioListadoFragment" />
+            app:destination="@id/usuarioListadoFragment"
+            app:popUpTo="@id/usuarioListadoEFragment"
+            app:popUpToInclusive="true" />
         <argument
             android:name="producto"
             app:argType="co.edu.unab.gemelosapp.model.entity.Producto" />
@@ -56,6 +67,48 @@
             app:destination="@id/usuarioDescripcionFragment" />
         <action
             android:id="@+id/action_usuarioListadoFragment_to_usuarioMenuFragment"
-            app:destination="@id/usuarioMenuFragment" />
+            app:destination="@id/usuarioMenuFragment"
+            app:popUpTo="@id/usuarioMenuFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/usuarioListadoEFragment"
+        android:name="co.edu.unab.gemelosapp.view.fragment.UsuarioListadoEFragment"
+        android:label="fragment_usuario_listado_e"
+        tools:layout="@layout/fragment_usuario_listado_e" >
+        <action
+            android:id="@+id/action_usuarioListadoEFragment_to_usuarioDescripcionFragment"
+            app:destination="@id/usuarioDescripcionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/usuarioEntregaFragment"
+        android:name="co.edu.unab.gemelosapp.view.fragment.UsuarioEntregaFragment"
+        android:label="fragment_usuario_entrega"
+        tools:layout="@layout/fragment_usuario_entrega" >
+        <action
+            android:id="@+id/action_usuarioEntregaFragment_to_usuarioMenuFragment"
+            app:destination="@id/usuarioMenuFragment"
+            app:popUpTo="@id/usuarioMenuFragment"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="pedido"
+            app:argType="co.edu.unab.gemelosapp.model.entity.Pedido" />
+        <action
+            android:id="@+id/action_usuarioEntregaFragment_to_usuarioDomicilioFragment"
+            app:destination="@id/usuarioDomicilioFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/usuarioDomicilioFragment"
+        android:name="co.edu.unab.gemelosapp.view.fragment.UsuarioDomicilioFragment"
+        android:label="fragment_usuario_domicilio"
+        tools:layout="@layout/fragment_usuario_domicilio" >
+        <action
+            android:id="@+id/action_usuarioDomicilioFragment_to_usuarioMenuFragment"
+            app:destination="@id/usuarioMenuFragment"
+            app:popUpTo="@id/usuarioMenuFragment"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="pedido"
+            app:argType="co.edu.unab.gemelosapp.model.entity.Pedido" />
     </fragment>
 </navigation>

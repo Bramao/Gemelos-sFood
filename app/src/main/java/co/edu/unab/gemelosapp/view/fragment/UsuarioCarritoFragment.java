@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -34,7 +35,7 @@ import co.edu.unab.gemelosapp.view.adapter.CarritoAdapter;
 public class UsuarioCarritoFragment extends Fragment {
 
     private ImageView imvLogoC;
-    private Button btnCcomprar;
+    private Button btnCcomprar, btnUCextras;
     private TextView txvCarritoVacio, txvValorTotal;
     private RecyclerView rcvListadoC;
     private List<Producto> productosC;
@@ -93,17 +94,18 @@ public class UsuarioCarritoFragment extends Fragment {
         rcvListadoC.setLayoutManager(manager);
         rcvListadoC.setAdapter(miAdaptador);
 
+        btnUCextras.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(getView()).navigate(UsuarioCarritoFragmentDirections.actionUsuarioCarritoFragmentToUsuarioListadoEFragment());
+            }
+        });
+
         btnCcomprar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Pedido nuevoPedido = new Pedido(nombreu, productosC, carritoDAO.getCantidad());
-                pedidoRepository.agregarFirestore(nuevoPedido, new FirestoreCallBack<Pedido>() {
-                    @Override
-                    public void correcto(Pedido respuesta) {
-                        Toast.makeText(getContext(), "Pedido realizado.", Toast.LENGTH_LONG).show();
-                        //finish();
-                    }
-                });
+                Navigation.findNavController(getView()).navigate(UsuarioCarritoFragmentDirections.actionUsuarioCarritoFragmentToUsuarioEntregaFragment(nuevoPedido));
             }
         });
     }
@@ -133,5 +135,6 @@ public class UsuarioCarritoFragment extends Fragment {
         rcvListadoC = view.findViewById(R.id.rcv_listadoC);
         txvCarritoVacio = view.findViewById(R.id.txv_carritoVacio);
         txvValorTotal = view.findViewById(R.id.txv_valorTotal);
+        btnUCextras = view.findViewById(R.id.btn_ucextras);
     }
 }

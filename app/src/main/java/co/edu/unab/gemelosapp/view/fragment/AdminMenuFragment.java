@@ -24,7 +24,7 @@ import co.edu.unab.gemelosapp.view.activity.LoginActivity;
 public class AdminMenuFragment extends Fragment {
 
     private ImageView imvLogoAM;
-    private Button btnAMproductos, btnAMpedidos, btnAMcerrar;
+    private Button btnAMproductos, btnAMextras, btnAMpedidos,  btnAMcerrar;
 
     public AdminMenuFragment() {
         // Required empty public constructor
@@ -37,7 +37,14 @@ public class AdminMenuFragment extends Fragment {
         btnAMproductos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Navigation.findNavController(getView()).navigate(AdminMenuFragmentDirections.actionAdminMenuFragmentToAdminListadoFragment());
+                Navigation.findNavController(getView()).navigate(AdminMenuFragmentDirections.actionAdminMenuFragmentToAdminListadoFragment(false));
+            }
+        });
+
+        btnAMextras.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(getView()).navigate(AdminMenuFragmentDirections.actionAdminMenuFragmentToAdminListadoFragment(true));
             }
         });
 
@@ -77,5 +84,6 @@ public class AdminMenuFragment extends Fragment {
         btnAMproductos =  view.findViewById(R.id.btn_amproductos);
         btnAMpedidos =  view.findViewById(R.id.btn_ampedidos);
         btnAMcerrar =  view.findViewById(R.id.btn_amcerrar);
+        btnAMextras = view.findViewById(R.id.btn_amextras);
     }
 }

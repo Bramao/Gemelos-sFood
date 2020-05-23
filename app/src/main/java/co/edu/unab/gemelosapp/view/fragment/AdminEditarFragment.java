@@ -58,7 +58,7 @@ public class AdminEditarFragment extends Fragment {
                 productoRepository.editarFirestore(producto, new FirestoreCallBack<Producto>() {
                     @Override
                     public void correcto(Producto respuesta) {
-                        Navigation.findNavController(getView()).navigate(AdminEditarFragmentDirections.actionAdminEditarFragmentToAdminListadoFragment());
+                        Navigation.findNavController(getView()).navigate(AdminEditarFragmentDirections.actionAdminEditarFragmentToAdminListadoFragment(producto.isExtra()));
                         //finish();
                     }
                 });
@@ -68,11 +68,13 @@ public class AdminEditarFragment extends Fragment {
         btnAEeliminar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                final boolean extraTmp = producto.isExtra();
+                final String nombreTmp = producto.getNombre();
                 productoRepository.eliminarFirestore(producto, new FirestoreCallBack<Producto>() {
                     @Override
                     public void correcto(Producto respuesta) {
-                        Toast.makeText(getContext(), "Se eliminó el producto: "+producto.getNombre(), Toast.LENGTH_LONG).show();
-                        Navigation.findNavController(getView()).navigate(AdminEditarFragmentDirections.actionAdminEditarFragmentToAdminListadoFragment());
+                        Toast.makeText(getContext(), "Se eliminó el producto: "+nombreTmp, Toast.LENGTH_LONG).show();
+                        Navigation.findNavController(getView()).navigate(AdminEditarFragmentDirections.actionAdminEditarFragmentToAdminListadoFragment(extraTmp));
                         //finish();
                     }
                 });

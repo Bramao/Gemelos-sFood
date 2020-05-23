@@ -4,8 +4,6 @@
     <string name="txt_txv_contraseña">Contraseña</string>
     <string name="txt_btn_ingresar">Ingresar</string>
     <string name="txt_btn_registrar">Registrarse</string>
-    <string name="txt_txv_rnumero">Número de tel.</string>
-    <string name="txt_txv_rdireccion">Dirección(opcional)</string>
     <string name="misDatos">SPgemelosapp</string>
     <string name="txt_btn_bproductos">Productos</string>
     <string name="txt_btn_bcarrito">Carrito Compra</string>
@@ -26,6 +24,20 @@
     <string name="txt_edt_aaprecio">Precio</string>
     <string name="txt_txv_appedidos">Listado Pedidos</string>
     <string name="txt_btn_apdterminar">Terminar Pedido</string>
+    <string name="txt_swt_apterminado">Terminado</string>
+    <string name="txt_btn_ucextras">Agregar extras</string>
+    <string name="txt_swt_aaextra">Extra</string>
+    <string name="txt_txv_listextras">Listado Extras</string>
+    <string name="txt_txv_ueentrega">Método de entrega</string>
+    <string name="txt_txv_uepregunta">¿De qué manera prefiere que sea entregado su pedido?</string>
+    <string name="txt_btn_uedomicilio">Entrega a domicilio</string>
+    <string name="txt_btn_uerecogida">Entrega en restaurante</string>
+    <string name="txt_txv_uddatos">Ingrese los datos de su domicilio</string>
+    <string name="txt_edt_uddireccion">Dirección</string>
+    <string name="txt_edt_udnumero">Número de tel</string>
+    <string name="txt_btn_udrealizar">Realizar pedido</string>
+    <string name="txt_txv_uddomicilio">Datos domicilio</string>
+
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

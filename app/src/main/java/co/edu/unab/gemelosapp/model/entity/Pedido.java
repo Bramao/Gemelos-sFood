@@ -6,7 +6,7 @@ import java.util.List;
 public class Pedido implements Serializable {
 
     private String id;
-    private String nombreu;
+    private String nombreu, token;
     private int cantidad;
     private boolean confirmacion, finalizado, domicilio;
     private List<Producto> misProductos;
@@ -24,6 +24,14 @@ public class Pedido implements Serializable {
 
     public Pedido(){
 
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 
     public boolean isDomicilio() {

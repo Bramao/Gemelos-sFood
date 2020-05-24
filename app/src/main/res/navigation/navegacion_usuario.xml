@@ -33,7 +33,9 @@
             app:nullable="true" />
         <action
             android:id="@+id/action_usuarioCarritoFragment_to_usuarioListadoEFragment"
-            app:destination="@id/usuarioListadoEFragment" />
+            app:destination="@id/usuarioListadoEFragment"
+            app:popUpTo="@id/usuarioListadoEFragment"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_usuarioCarritoFragment_to_usuarioEntregaFragment"
             app:destination="@id/usuarioEntregaFragment" />

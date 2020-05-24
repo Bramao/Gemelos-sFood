@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,7 +22,9 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.List;
 
 import co.edu.unab.gemelosapp.R;
+import co.edu.unab.gemelosapp.model.bd.network.FirestoreCallBack;
 import co.edu.unab.gemelosapp.model.entity.Usuario;
+import co.edu.unab.gemelosapp.model.repository.UsuarioRepository;
 import co.edu.unab.gemelosapp.view.fragment.UsuarioMenuFragment;
 
 public class LoginActivity extends AppCompatActivity {
@@ -29,12 +32,14 @@ public class LoginActivity extends AppCompatActivity {
     private EditText edtUsuario, edtContra;
     private Button btnIngresar, btnRegistrar;
     private ImageView imvLogoL;
+    private UsuarioRepository usuarioRepository;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_main);
 
+        this.usuarioRepository = new UsuarioRepository(getApplicationContext());
         this.asociarElementos();
 
         final SharedPreferences misPreferencias = getSharedPreferences(getString(R.string.misDatos), 0);
@@ -56,7 +61,7 @@ public class LoginActivity extends AppCompatActivity {
         btnIngresar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FirebaseFirestore firestoreDB = FirebaseFirestore.getInstance();
+                final FirebaseFirestore firestoreDB = FirebaseFirestore.getInstance();
                 firestoreDB.collection("usuarios").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {//Traer usuarios de la base de datos y compararlos con los datos ingresados
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -66,7 +71,21 @@ public class LoginActivity extends AppCompatActivity {
                                 SharedPreferences.Editor miEditor = misPreferencias.edit();
                                 miEditor.putBoolean("logueado", true);
                                 miEditor.putString("usuario",edtUsuario.getText().toString());
+                                miEditor.putString("id", usuarioTmp.getId());
                                 miEditor.apply();
+                                final String token = misPreferencias.getString("token", " ");
+                                String idUsuario = misPreferencias.getString("id", " ");
+
+                                Log.d("token", "token: "+token);
+
+                                usuarioTmp.setToken(token);
+
+                                usuarioRepository.editarUsuario(usuarioTmp, new FirestoreCallBack<Usuario>() {
+                                    @Override
+                                    public void correcto(Usuario respuesta) {
+                                        Log.d("token", "token login: "+respuesta.getToken());
+                                    }
+                                });
 
                                 Toast.makeText(LoginActivity.this,"Bienvenido "+edtUsuario.getText(), Toast.LENGTH_SHORT).show();
 

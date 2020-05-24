@@ -54,6 +54,7 @@ public class UsuarioCarritoFragment extends Fragment {
 
         SharedPreferences misPreferencias = getActivity().getSharedPreferences(getString(R.string.misDatos), 0);
         final String nombreu = misPreferencias.getString("usuario", "");
+        final String token = misPreferencias.getString("token", "");
 
         BaseDatosC bd = BaseDatosC.obtenerInstancia(getContext());
         carritoDAO = bd.carritoDAO();
@@ -105,6 +106,7 @@ public class UsuarioCarritoFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Pedido nuevoPedido = new Pedido(nombreu, productosC, carritoDAO.getCantidad());
+                nuevoPedido.setToken(token);
                 Navigation.findNavController(getView()).navigate(UsuarioCarritoFragmentDirections.actionUsuarioCarritoFragmentToUsuarioEntregaFragment(nuevoPedido));
             }
         });

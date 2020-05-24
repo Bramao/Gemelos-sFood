@@ -9,6 +9,7 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,8 +18,19 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import co.edu.unab.gemelosapp.R;
 import co.edu.unab.gemelosapp.model.bd.network.FirestoreCallBack;
@@ -64,6 +76,7 @@ public class AdminPedidosDFragment extends Fragment {
         btnAPDterminar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                notificar(pedido);
                 pedidoRepository.eliminarFirestore(pedido, new FirestoreCallBack<Pedido>() {
                     @Override
                     public void correcto(Pedido respuesta) {
@@ -106,6 +119,38 @@ public class AdminPedidosDFragment extends Fragment {
         });
     }
 
+    private void notificar(Pedido pedido){
+        Log.d("notify", "notificado1");
+        RequestQueue myrequest = Volley.newRequestQueue(getContext());
+        JSONObject json = new JSONObject();
+        try {
+            String token = pedido.getToken();
+            json.put("to", token);
+            JSONObject notificacion = new JSONObject();
+            notificacion.put("titulo", "Peidido terminado.");
+            notificacion.put("detalle", "Tu pedido de "+pedido.getCantidad()+" prodcutos ya está listo!");
+
+            json.put("data", notificacion);
+
+            String URL = "https://fcm.googleapis.com/fcm/send";
+
+            JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, URL, json, null, null){
+                @Override
+                public Map<String, String> getHeaders() {
+                    Map<String,String> header = new HashMap<>();
+                    header.put("content-type", "application/json");
+                    header.put("authorization", "key=AAAAoDZ9ykU:APA91bFCepcSYSqU0npuZYPRDFrp-rOm2rHFMwhNAxxhE_PRzsR06A2lUkldmnSk5DDYp046yiloLjjVG52FFPikQBvn7I4-JQ8sV49giEB1_ZhBT9orumlbcWqgwBa_GV-ZkfA7pEL6");
+
+                    return header;
+                }
+            };
+            Log.d("notify", "notificado2");
+            myrequest.add(request);
+
+        }catch (JSONException e){
+            e.printStackTrace();
+        }
+    }
 
 
     private void asociarElementos(View view){

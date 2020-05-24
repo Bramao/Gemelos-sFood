@@ -8,7 +8,7 @@ import java.io.Serializable;
 public class Usuario implements Serializable {
 
     private String id;
-    private String nombre, pass, direccion;
+    private String nombre, pass, direccion, token;
     private int numero;
     private boolean admin;
 
@@ -21,6 +21,14 @@ public class Usuario implements Serializable {
         this.nombre = nombre;
         this.pass = pass;
         this.admin = admin;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 
     public String getId() {

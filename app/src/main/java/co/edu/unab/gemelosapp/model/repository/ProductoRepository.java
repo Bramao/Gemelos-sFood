@@ -77,7 +77,13 @@ public class ProductoRepository {
             @Override
             public void onComplete(@NonNull Task<DocumentReference> task) {
                 if(task.isComplete()){
-                    firestoreCallBack.correcto(producto);
+                    producto.setId(task.getResult().getId());
+                    editarFirestore(producto, new FirestoreCallBack<Producto>() {
+                        @Override
+                        public void correcto(Producto respuesta) {
+                            firestoreCallBack.correcto(producto);
+                        }
+                    });
                 }
             }
         });

@@ -74,7 +74,6 @@ public class LoginActivity extends AppCompatActivity {
                                 miEditor.putString("id", usuarioTmp.getId());
                                 miEditor.apply();
                                 final String token = misPreferencias.getString("token", " ");
-                                String idUsuario = misPreferencias.getString("id", " ");
 
                                 Log.d("token", "token: "+token);
 

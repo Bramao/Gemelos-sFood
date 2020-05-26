@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_usuarioMenuFragment_to_usuarioCarritoFragment"
             app:destination="@id/usuarioCarritoFragment" />
+        <action
+            android:id="@+id/action_usuarioMenuFragment_to_usuarioPedidosFragment"
+            app:destination="@id/usuarioPedidosFragment" />
     </fragment>
     <fragment
         android:id="@+id/usuarioCarritoFragment"
@@ -39,6 +42,9 @@
         <action
             android:id="@+id/action_usuarioCarritoFragment_to_usuarioEntregaFragment"
             app:destination="@id/usuarioEntregaFragment" />
+        <action
+            android:id="@+id/action_usuarioCarritoFragment_to_usuarioListadoFragment"
+            app:destination="@id/usuarioListadoFragment" />
     </fragment>
     <fragment
         android:id="@+id/usuarioDescripcionFragment"
@@ -112,5 +118,16 @@
         <argument
             android:name="pedido"
             app:argType="co.edu.unab.gemelosapp.model.entity.Pedido" />
+    </fragment>
+    <fragment
+        android:id="@+id/usuarioPedidosFragment"
+        android:name="co.edu.unab.gemelosapp.view.fragment.UsuarioPedidosFragment"
+        android:label="fragment_usuario_pedidos"
+        tools:layout="@layout/fragment_usuario_pedidos" >
+        <action
+            android:id="@+id/action_usuarioPedidosFragment_to_usuarioMenuFragment"
+            app:destination="@id/usuarioMenuFragment"
+            app:popUpTo="@id/usuarioMenuFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>

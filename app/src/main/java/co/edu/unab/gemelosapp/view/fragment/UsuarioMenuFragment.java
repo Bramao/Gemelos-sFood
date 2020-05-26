@@ -17,7 +17,10 @@ import android.widget.ImageView;
 
 import co.edu.unab.gemelosapp.R;
 import co.edu.unab.gemelosapp.model.bd.local.BaseDatosC;
+import co.edu.unab.gemelosapp.model.bd.local.BaseDatosP;
 import co.edu.unab.gemelosapp.model.bd.local.CarritoDAO;
+import co.edu.unab.gemelosapp.model.bd.local.PedidoDAO;
+import co.edu.unab.gemelosapp.model.entity.Usuario;
 import co.edu.unab.gemelosapp.view.activity.LoginActivity;
 
 /**
@@ -26,9 +29,10 @@ import co.edu.unab.gemelosapp.view.activity.LoginActivity;
 public class UsuarioMenuFragment extends Fragment {
 
 
-    private Button btnMproductos, btnMcarrito, btnMcerrarS;
+    private Button btnMproductos, btnMcarrito, btnMcerrarS, btnUMpedidos;
     private ImageView imvLogoM;
     private CarritoDAO carritoDAO;
+    private PedidoDAO pedidoDAO;
     public UsuarioMenuFragment() {
         // Required empty public constructor
     }
@@ -40,6 +44,8 @@ public class UsuarioMenuFragment extends Fragment {
 
         BaseDatosC bd = BaseDatosC.obtenerInstancia(getContext());
         carritoDAO = bd.carritoDAO();
+        BaseDatosP baseDatosP = BaseDatosP.obtenerInstancia(getContext());
+        pedidoDAO = baseDatosP.pedidoDAO();
 
         btnMproductos.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,15 +61,26 @@ public class UsuarioMenuFragment extends Fragment {
             }
         });
 
+        btnUMpedidos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(getView()).navigate(UsuarioMenuFragmentDirections.actionUsuarioMenuFragmentToUsuarioPedidosFragment());
+            }
+        });
+
         btnMcerrarS.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 SharedPreferences misPreferencias = getActivity().getSharedPreferences(getString(R.string.misDatos), 0);
                 SharedPreferences.Editor miEditor = misPreferencias.edit();
-                miEditor.clear();
+                miEditor.remove("admin");
+                miEditor.remove("logueado");
+                miEditor.remove("usuario");
+                miEditor.remove("id");
                 miEditor.apply();
 
                 carritoDAO.borrarTodo();
+                pedidoDAO.borrarTodo();
 
                 Intent in = new Intent(getContext(), LoginActivity.class);
                 startActivity(in);
@@ -86,5 +103,6 @@ public class UsuarioMenuFragment extends Fragment {
         btnMcarrito = view.findViewById(R.id.btn_mcarrito);
         imvLogoM = view.findViewById(R.id.imv_logoM);
         btnMcerrarS = view.findViewById(R.id.btn_mcerrars);
+        btnUMpedidos = view.findViewById(R.id.btn_umpedidos);
     }
 }

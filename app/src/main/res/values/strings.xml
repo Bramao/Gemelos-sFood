@@ -26,6 +26,7 @@
     <string name="txt_btn_apdterminar">Terminar Pedido</string>
     <string name="txt_swt_apterminado">Terminado</string>
     <string name="txt_btn_ucextras">Agregar extras</string>
+    <string name="txt_btn_ccproductos">Agregar prodcutos</string>
     <string name="txt_swt_aaextra">Extra</string>
     <string name="txt_txv_listextras">Listado Extras</string>
     <string name="txt_txv_ueentrega">Método de entrega</string>
@@ -37,6 +38,7 @@
     <string name="txt_edt_udnumero">Número de tel</string>
     <string name="txt_btn_udrealizar">Realizar pedido</string>
     <string name="txt_txv_uddomicilio">Datos domicilio</string>
+    <string name="txt_btn_umpedidos">Mis pedidos</string>
 
 
     <!-- TODO: Remove or change this placeholder text -->

@@ -23,12 +23,14 @@
 
     <ImageView
         android:id="@+id/imv_logoLE"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="100dp"
         android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txv_listextras"
         app:layout_constraintTop_toTopOf="parent"
-        tools:src="@tools:sample/avatars" />
+        app:srcCompat="@drawable/logo_4"
+        tools:src="@drawable/logo_4" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcv_listadoE"

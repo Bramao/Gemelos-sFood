@@ -14,6 +14,10 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import co.edu.unab.gemelosapp.R;
+import co.edu.unab.gemelosapp.model.bd.local.BaseDatosC;
+import co.edu.unab.gemelosapp.model.bd.local.BaseDatosP;
+import co.edu.unab.gemelosapp.model.bd.local.CarritoDAO;
+import co.edu.unab.gemelosapp.model.bd.local.PedidoDAO;
 import co.edu.unab.gemelosapp.model.bd.network.FirestoreCallBack;
 import co.edu.unab.gemelosapp.model.entity.Pedido;
 import co.edu.unab.gemelosapp.model.repository.PedidoRepository;
@@ -24,7 +28,10 @@ import co.edu.unab.gemelosapp.model.repository.PedidoRepository;
 public class UsuarioEntregaFragment extends Fragment {
 
     private Button btnUEdomicilio, btnUErecogida;
+    private PedidoDAO pedidoDAO;
+    private CarritoDAO carritoDAO;
     PedidoRepository pedidoRepository;
+
 
     public UsuarioEntregaFragment() {
         // Required empty public constructor
@@ -35,7 +42,13 @@ public class UsuarioEntregaFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         final Pedido pedido = UsuarioEntregaFragmentArgs.fromBundle(getArguments()).getPedido();
+        final Pedido miPedido = new Pedido(pedido.getNombreu(), pedido.getCantidad(), false, false, pedido.getPrecio());
         pedidoRepository = new PedidoRepository(getContext());
+
+        BaseDatosP baseDatosP = BaseDatosP.obtenerInstancia(getContext());
+        pedidoDAO = baseDatosP.pedidoDAO();
+        BaseDatosC baseDatosC = BaseDatosC.obtenerInstancia(getContext());
+        carritoDAO = baseDatosC.carritoDAO();
 
         btnUEdomicilio.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,9 +61,13 @@ public class UsuarioEntregaFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 pedido.setDomicilio(false);
+                miPedido.setDomicilio(false);
                 pedidoRepository.agregarFirestore(pedido, new FirestoreCallBack<Pedido>() {
                     @Override
                     public void correcto(Pedido respuesta) {
+                        miPedido.setId(respuesta.getId());
+                        pedidoDAO.agregar(miPedido);
+                        carritoDAO.borrarTodo();
                         Toast.makeText(getContext(), "Pedido realizado.", Toast.LENGTH_LONG).show();
                         Navigation.findNavController(getView()).navigate(UsuarioEntregaFragmentDirections.actionUsuarioEntregaFragmentToUsuarioMenuFragment());
 

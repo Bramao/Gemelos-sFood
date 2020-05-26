@@ -60,7 +60,10 @@ public class AdminMenuFragment extends Fragment {
             public void onClick(View v) {
                 SharedPreferences misPreferencias = getActivity().getSharedPreferences(getString(R.string.misDatos), 0);
                 SharedPreferences.Editor miEditor = misPreferencias.edit();
-                miEditor.clear();
+                miEditor.remove("admin");
+                miEditor.remove("logueado");
+                miEditor.remove("usuario");
+                miEditor.remove("id");
                 miEditor.apply();
 
                 Intent in = new Intent(getContext(), LoginActivity.class);

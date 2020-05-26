@@ -14,7 +14,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:srcCompat="@drawable/logo_2"
+        tools:srcCompat="@drawable/logo_2" />
 
     <EditText
         android:id="@+id/edt_rusuario"

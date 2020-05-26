@@ -1,29 +1,61 @@
 package co.edu.unab.gemelosapp.model.entity;
 
+import androidx.annotation.NonNull;
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
+
 import java.io.Serializable;
 import java.util.List;
 
+@Entity(tableName = "pedidos")
 public class Pedido implements Serializable {
 
+    @PrimaryKey
+    @NonNull
     private String id;
     private String nombreu, token;
     private int cantidad;
+    private double precio;
     private boolean confirmacion, finalizado, domicilio;
+    @Ignore
     private List<Producto> misProductos;
 
-    public Pedido(String nombreu, List<Producto> misProductos, int cantidad) {
+    @Ignore
+    public Pedido(String nombreu, List<Producto> misProductos, int cantidad, boolean finalizado, boolean domicilio, double precio) {
         this.nombreu = nombreu;
         this.misProductos = misProductos;
         this.cantidad = cantidad;
+        this.finalizado = false;
+        this.domicilio = domicilio;
+        this.precio = precio;
     }
 
+    public Pedido(String nombreu, int cantidad, boolean finalizado, boolean domicilio, double precio){
+        this.nombreu = nombreu;
+        this.cantidad = cantidad;
+        this.finalizado = finalizado;
+        this.domicilio = domicilio;
+        this.precio = precio;
+    }
+
+    @Ignore
     public Pedido(boolean confirmacion, boolean finalizado){
         this.confirmacion = confirmacion;
         this.finalizado = finalizado;
     }
 
+    @Ignore
     public Pedido(){
 
+    }
+
+    public double getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(double precio) {
+        this.precio = precio;
     }
 
     public String getToken() {

@@ -35,7 +35,7 @@ import co.edu.unab.gemelosapp.view.adapter.CarritoAdapter;
 public class UsuarioCarritoFragment extends Fragment {
 
     private ImageView imvLogoC;
-    private Button btnCcomprar, btnUCextras;
+    private Button btnCcomprar, btnUCextras, btnCCproductos;
     private TextView txvCarritoVacio, txvValorTotal;
     private RecyclerView rcvListadoC;
     private List<Producto> productosC;
@@ -102,14 +102,23 @@ public class UsuarioCarritoFragment extends Fragment {
             }
         });
 
+        btnCCproductos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(getView()).navigate(UsuarioCarritoFragmentDirections.actionUsuarioCarritoFragmentToUsuarioListadoFragment());
+            }
+        });
+
         btnCcomprar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Pedido nuevoPedido = new Pedido(nombreu, productosC, carritoDAO.getCantidad());
+                Pedido nuevoPedido = new Pedido(nombreu, productosC, carritoDAO.getCantidad(),false,false, carritoDAO.getTotal());
                 nuevoPedido.setToken(token);
                 Navigation.findNavController(getView()).navigate(UsuarioCarritoFragmentDirections.actionUsuarioCarritoFragmentToUsuarioEntregaFragment(nuevoPedido));
             }
         });
+
+
     }
 
     @Override
@@ -138,5 +147,6 @@ public class UsuarioCarritoFragment extends Fragment {
         txvCarritoVacio = view.findViewById(R.id.txv_carritoVacio);
         txvValorTotal = view.findViewById(R.id.txv_valorTotal);
         btnUCextras = view.findViewById(R.id.btn_ucextras);
+        btnCCproductos = view.findViewById(R.id.btn_ccproductos);
     }
 }

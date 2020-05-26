@@ -16,7 +16,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:srcCompat="@drawable/logo_4"
+        tools:srcCompat="@drawable/logo_4" />
 
     <Button
         android:id="@+id/btn_amproductos"

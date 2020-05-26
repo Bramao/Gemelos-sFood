@@ -21,6 +21,10 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import co.edu.unab.gemelosapp.R;
+import co.edu.unab.gemelosapp.model.bd.local.BaseDatosC;
+import co.edu.unab.gemelosapp.model.bd.local.BaseDatosP;
+import co.edu.unab.gemelosapp.model.bd.local.CarritoDAO;
+import co.edu.unab.gemelosapp.model.bd.local.PedidoDAO;
 import co.edu.unab.gemelosapp.model.bd.network.FirestoreCallBack;
 import co.edu.unab.gemelosapp.model.entity.Pedido;
 import co.edu.unab.gemelosapp.model.entity.Usuario;
@@ -34,6 +38,8 @@ public class UsuarioDomicilioFragment extends Fragment {
     private EditText edtUDdireccion, edtUDnumero;
     private Button btnUDrealizar;
     private PedidoRepository pedidoRepository;
+    private PedidoDAO pedidoDAO;
+    private CarritoDAO carritoDAO;
 
     public UsuarioDomicilioFragment() {
         // Required empty public constructor
@@ -44,12 +50,20 @@ public class UsuarioDomicilioFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         final Pedido pedido = UsuarioDomicilioFragmentArgs.fromBundle(getArguments()).getPedido();
+        final Pedido miPedido = new Pedido(pedido.getNombreu(), pedido.getCantidad(), false, false, pedido.getPrecio());
+
+
+        BaseDatosP baseDatosP = BaseDatosP.obtenerInstancia(getContext());
+        pedidoDAO = baseDatosP.pedidoDAO();
+        BaseDatosC baseDatosC = BaseDatosC.obtenerInstancia(getContext());
+        carritoDAO = baseDatosC.carritoDAO();
 
         btnUDrealizar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 pedido.setDomicilio(true);
+                miPedido.setDomicilio(true);
                 pedidoRepository = new PedidoRepository(getActivity());
                 final FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
                 firebaseFirestore.collection("usuarios").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -66,6 +80,9 @@ public class UsuarioDomicilioFragment extends Fragment {
                                         pedidoRepository.agregarFirestore(pedido, new FirestoreCallBack<Pedido>() {
                                             @Override
                                             public void correcto(Pedido respuesta) {
+                                                miPedido.setId(respuesta.getId());
+                                                pedidoDAO.agregar(miPedido);
+                                                carritoDAO.borrarTodo();
                                                 Toast.makeText(getContext(), "Pedido realizado", Toast.LENGTH_LONG).show();
                                                 Navigation.findNavController(getView()).navigate(UsuarioDomicilioFragmentDirections.actionUsuarioDomicilioFragmentToUsuarioMenuFragment());
                                             }

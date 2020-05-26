@@ -62,10 +62,28 @@ public class PedidoRepository {
             @Override
             public void onComplete(@NonNull Task<DocumentReference> task) {
                 if(task.isComplete()){
+                    pedido.setId(task.getResult().getId());
+                    editarFirestore(pedido, new FirestoreCallBack<Pedido>() {
+                        @Override
+                        public void correcto(Pedido respuesta) {
+                            firestoreCallBack.correcto(pedido);
+                        }
+                    });
+                }
+            }
+        });
+    }
+
+    public void editarFirestore(final Pedido pedido, final FirestoreCallBack<Pedido> firestoreCallBack){
+        firebaseFirestore.collection("pedidos").document(pedido.getId()).set(pedido).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(task.isSuccessful()){
                     firestoreCallBack.correcto(pedido);
                 }
             }
         });
+
     }
 
     public void eliminarFirestore(final Pedido pedido, final FirestoreCallBack<Pedido> firestoreCallBack){

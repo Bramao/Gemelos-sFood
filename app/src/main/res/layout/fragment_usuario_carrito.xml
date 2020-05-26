@@ -22,12 +22,14 @@
 
     <ImageView
         android:id="@+id/imv_logoC"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="100dp"
         android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txv_ccarrito"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:srcCompat="@drawable/logo_4"
+        tools:srcCompat="@drawable/logo_4" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcv_listadoC"
@@ -57,7 +59,7 @@
         android:layout_marginTop="10dp"
         android:text="@string/txt_btn_ucextras"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btn_ccproductos"
         app:layout_constraintTop_toBottomOf="@+id/rcv_listadoC" />
 
     <TextView
@@ -79,5 +81,15 @@
         android:text="TextView"
         app:layout_constraintStart_toEndOf="@+id/btn_ccomprar"
         app:layout_constraintTop_toBottomOf="@+id/btn_ucextras" />
+
+    <Button
+        android:id="@+id/btn_ccproductos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/txt_btn_ccproductos"
+        app:layout_constraintEnd_toStartOf="@+id/btn_ucextras"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rcv_listadoC" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
